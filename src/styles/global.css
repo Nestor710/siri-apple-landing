@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+body {
+    min-width: 320px;
+    font-size: 17px;
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(29, 29, 31);
+    font-style: normal;
+}
+
+html {
+    --global-height: 44px;
+    --globalmessage-segment-height: 0px;
+    --globalnav-segmentbar-height: 0px;
+}
+
+.section-hero {
+    --homepod-bottom: -245px;
+    position: relative;
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+    overflow: hidden;
+}
+
+.typography-headline-elevated {
+    font-size: 64px;
+    line-height: 1.0625;
+    font-weight: 600;
+    letter-spacing: -0.009em;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.will-change .parallax-this {
+    will-change: transform;
+}
+
+.section-hero-copy .typography-headline-elevated {
+    text-align: center;
+    padding-bottom: 35px;
+    margin-top: 0px;
+    background-clip: text;
+    color: transparent;
+    --gradient-color-1: #ff007a;
+    --gradient-color-2: #1e76c9;
+    --gradient-color-3: #35fced;
+}
+
+.section-hero-copy.hero-copy-v2 .parallax-0 {
+    --gradient-color-1-start: 0%;
+    --gradient-color-2-start: 85%;
+    --gradient-color-3-start: 160%;
+}
+
+.section-hero-copy.hero-copy-v2 .parallax-this {
+    --gradient-angle: 135deg;
+    background-image: linear-gradient(var(--gradient-angle),
+     var(--gradient-color-1) var(--gradient-color-1-start), 
+     var(--gradient-color-2) var(--gradient-color-2-start), 
+     var(--gradient-color-3) var(--gradient-color-3-start));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-on-the-go .gradient {
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(45deg, rgb(34, 77, 136) 32%, rgb(147, 88, 147) 60%, rgb(232, 150, 184) 80%);
+}
+
+
+.section-in-the-car h2 {
+    --tile-y: -150px;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(15deg, rgb(56, 20, 121) 20%, rgb(61, 87, 145) 35%, rgb(128, 214, 225) 75%);
+    padding-bottom: 10px;
+}
