@@ -1,0 +1,268 @@
+---
+
+---
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {{
+        interface ExtendedWindow extends Window {
+            scrollHandlerActive?: boolean;
+        }
+        const extWindow = window as ExtendedWindow;
+        
+        // Verificar si es un dispositivo móvil
+        const isMobile = window.innerWidth < 768; // Puedes ajustar este valor según tus breakpoints
+        
+        // Si es móvil, no aplicamos los efectos de parallax
+        if (isMobile) {
+            return;
+        }
+
+        const parallaxElements = [
+            document.querySelector(".parallax-0") as HTMLElement,
+            document.querySelector(".parallax-1") as HTMLElement,
+            document.querySelector(".parallax-2") as HTMLElement,
+            document.querySelector(".parallax-3") as HTMLElement
+        ];
+        const intensityFactors = [0.8, 1.5, 2.2, 2.8];
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Añadir evento de scroll cuando el elemento es visible
+                    window.addEventListener('scroll', handleScroll);
+                    (window as any).scrollHandlerActive = true;
+                } else {
+                    const allHidden = parallaxElements.every(el => {
+                        const rect = el.getBoundingClientRect();
+                        return (rect.bottom < 0 || rect.top > window.innerHeight);
+                    });
+                    // Remover evento de scroll cuando el elemento no es visible
+                    if (allHidden && (window as any).scrollHandlerActive) {
+                        window.removeEventListener('scroll', handleScroll);
+                        (window as any).scrollHandlerActive = false;
+
+                        parallaxElements.forEach(el => {
+                            if(el) el.style.transform = 'matrix(0, 0, 0, 0, 0)';
+                        });
+                    }
+
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Función para manejar el efecto de elevación durante el scroll
+        function handleScroll() {
+            const viewHeight = window.innerHeight;
+            
+            // Aplicar efecto a cada elemento parallax
+            parallaxElements.forEach((element, index) => {
+                if (!element) return;
+                
+                // Obtener la posición del elemento en la ventana
+                const rect = element.getBoundingClientRect();
+                
+                // Calcular qué tan lejos está el elemento del centro de la ventana
+                const distanceFromCenter = (viewHeight / 2) - (rect.top + rect.height / 2);
+                
+                // Calcular el valor de elevación con diferentes intensidades
+                // Aplicamos un retraso progresivo según el índice
+                const elevationValue = Math.min(
+                    Math.max(distanceFromCenter / 10 * intensityFactors[index], -60), 
+                    60
+                );
+                
+                // Aplicar la transformación para elevar el elemento
+                element.style.transform = `matrix(1, 0, 0, 1, 0, ${-elevationValue})`; 
+            });
+        }
+
+        // Función debounce con tipos correctos
+        function debounce<T extends (...args: any[]) => any>(
+            func: T, 
+            wait: number
+        ): (...args: Parameters<T>) => void {
+            let timeout: number | null = null;
+            
+            return function(this: any, ...args: Parameters<T>): void {
+                const context = this;
+                if (timeout !== null) clearTimeout(timeout);
+                timeout = window.setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+    
+        // Añadir listener para cambios de tamaño de ventana
+        window.addEventListener('resize', debounce(function(): void {
+            const nowMobile = window.innerWidth < 768;
+
+            // Si cambia a móvil, eliminar efectos
+            if (nowMobile && extWindow.scrollHandlerActive) {
+                console.log('Mobile');
+                
+                window.removeEventListener('scroll', handleScroll);
+                extWindow.scrollHandlerActive = false;
+                
+                // Restaurar posiciones originales
+                parallaxElements.forEach(el => {
+                    el.style.transform = 'translateY(0)';
+                    el.style.transition = 'none';
+                });
+            }
+            // Si cambia a desktop, reactivar observer
+            else if (!nowMobile && !extWindow.scrollHandlerActive) {
+                console.log('Desktop');
+                
+                parallaxElements.forEach(element => {
+                    observer.observe(element);
+                });
+            }
+        }, 250));
+
+        // Observar todos los elementos parallax solo en desktop
+        parallaxElements.forEach(element => {
+            if(element) observer.observe(element);
+        });
+        
+    }});
+</script>
+
+<div class="section-hero-copy hero-copy">
+    <p class="typography-headline-elevated parallax-this parallax-0">
+        Get everyday tasks done using only your voice.
+    </p>
+    <p class="typography-headline-elevated parallax-this parallax-1">
+        Just say "Siri" or "Hey Siri" to start your request.
+    </p>
+    <p class="typography-headline-elevated parallax-this parallax-2">
+        Built into all your Apple devices. 
+        Now including Apple Vision Pro.
+    </p>
+    <p class="typography-headline-elevated parallax-this parallax-3">
+        Protected by the strongest privacy of any intelligent assistant.
+    </p>
+</div>
+
+<style>
+    .section-hero-copy {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+        padding-top: var(--section-padding);
+        max-width: 770px;
+    }
+
+    .section-hero-copy.hero-copy {
+        max-width: 950px;
+    }
+    @media only screen and (min-width: 1069px) {
+        .section-hero-copy.hero-copy .parallax-0 {
+            max-width: 47.294118rem;
+        }
+        .section-hero-copy.hero-copy .parallax-1 {
+            max-width: 51.294118rem;
+        }
+        .section-hero-copy.hero-copy .parallax-2 {
+            max-width: 62.294118rem;
+        }
+        .section-hero-copy.hero-copy .parallax-3 {
+            max-width: 59.294118rem;
+        }
+    }
+
+    .section-hero-copy.hero-copy .parallax-0 {
+        --gradient-color-1-start: 0%;
+        --gradient-color-2-start: 85%;
+        --gradient-color-3-start: 160%;
+    }
+
+    .section-hero-copy.hero-copy .parallax-1 {
+        --gradient-color-1-start: -15%;
+        --gradient-color-2-start: 70%;
+        --gradient-color-3-start: 150%;
+    }
+
+    .section-hero-copy.hero-copy .parallax-2 {
+        --gradient-color-1-start: -25%;
+        --gradient-color-2-start: 60%;
+        --gradient-color-3-start: 130%;
+    }
+
+    .section-hero-copy.hero-copy .parallax-3 {
+        --gradient-color-1-start: -45%;
+        --gradient-color-2-start: 50%;
+        --gradient-color-3-start: 110%;
+    }
+
+    .section-hero-copy.hero-copy .parallax-this {
+        --gradient-angle: 135deg;
+        background-image: linear-gradient(var(--gradient-angle), var(--gradient-color-1) var(--gradient-color-1-start), var(--gradient-color-2) var(--gradient-color-2-start), var(--gradient-color-3) var(--gradient-color-3-start));
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-hero-copy .typography-headline-elevated.parallax-0 {
+        background-image: linear-gradient(135deg, var(--gradient-color-1) 10%, var(--gradient-color-2) 75%, var(--gradient-color-3) 150%);
+    }
+
+    .section-hero-copy .typography-headline-elevated {
+        text-align: center;
+        padding-bottom: 35px;
+        margin-top: 0px;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        --gradient-color-1: #ff007a;
+        --gradient-color-2: #1e76c9;
+        --gradient-color-3: #35fced;
+    }
+
+    .typography-headline-elevated {
+        font-size: 58px;
+        line-height: 1.0625;
+        font-weight: 600;
+        letter-spacing: -0.009em;
+        font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    }
+
+    @media only screen and (max-width: 734px) {
+        .section-hero-copy.hero-copy {
+            max-width: 270px;
+        }
+
+        .section-hero-copy.hero-copy .parallax-0 {
+            --gradient-color-2-start: 120% !important;
+        }
+
+        .section-hero-copy.hero-copy .parallax-1 {
+            --gradient-color-1-start: -30% !important;
+            --gradient-color-2-start: 100% !important;
+        }
+
+        .section-hero-copy.hero-copy .parallax-2 {
+            --gradient-color-1-start: -60% !important;
+            --gradient-color-2-start: 55% !important;
+        }
+
+        .section-hero-copy.hero-copy .parallax-3 {
+            --gradient-color-1-start: -100% !important;
+            --gradient-color-2-start: 15% !important;
+            --gradient-color-3-start: 100% !important;
+        }
+
+        .section-hero-copy .typography-headline-elevated:first-child {
+            max-width: 264px;
+            margin: 0 auto;
+        }
+    }
+
+    @media only screen and (max-width: 734px) and (max-width: 734px) {
+        .section-hero-copy .typography-headline-elevated {
+            font-size: 32px;
+            line-height: 1.125;
+            font-weight: 600;
+            letter-spacing: .004em;
+            font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+    }
+</style>
