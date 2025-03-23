@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+:root {
+    --tile-y: 150;
+    --tile-opacity: 0;
+    --tile-duration: 400;
+    --tile-stagger-amount: 1;
+    --tile-stagger-index: 0;
+    --section-padding: 230px;
+    --section-content: 1074px;
+    --section-content-wide: calc(100% - 100px);
+    --tile-border-radius: 40px;
+    --tile-padding: 45px;
+    --tile-max-width: 300px;
+}
+
 body {
     min-width: 320px;
     font-size: 17px;
@@ -78,4 +92,38 @@ html {
     background-clip: text;
     background-image: linear-gradient(15deg, rgb(56, 20, 121) 20%, rgb(61, 87, 145) 35%, rgb(128, 214, 225) 75%);
     padding-bottom: 10px;
+}
+
+.section-hero .siri-text {
+    -webkit-mask: url(/images/logos/hero_siri_large.svg);
+    mask: url(/images/logos/hero_siri_large.svg);
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    width: 384px;
+    height: 218px;
+    margin-left: -10px;
+    z-index: 10;
+    background: linear-gradient(121deg, #FE0576 24%, #EA12B6 40%, #38CBFF 60%);
+    background-size: 300% 100%;
+    animation: gradient 3s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+.text-hidden {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+}
+
+@media only screen and (min-width: 1441px) {
+    :root {
+        --section-content-wide: 1344px;
+    }
 }

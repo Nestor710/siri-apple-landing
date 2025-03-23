@@ -1,0 +1,326 @@
+.section-hero {
+    --homepod-bottom: -245px;
+    position: relative;
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+    overflow: hidden;
+}
+
+.section-hero-images {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: calc(100vh - var(--global-height));
+    display: grid;
+    grid-template-columns: auto var(--middle-col-width) auto;
+    --middle-col-width: 50%;
+    min-height: 980px;
+    max-width: 1200px;
+    margin: 0 auto calc(var(--homepod-bottom)* -1);
+}
+
+.section-hero-images .airpods {
+    z-index: 10;
+    mix-blend-mode: darken;
+    right: 0px;
+    top: 7%;
+    transform: scale(1.5) translate3d(-50%, -60%, 0px);
+}
+
+.section-hero-images picture.animate {
+    animation: 2s ease 0s 1 normal forwards running animate-hero;
+}
+
+@keyframes animate-hero {
+    100% {
+        opacity: 1;
+        transform: scale(1) translateZ(0px);
+    }
+}
+
+.section-hero-images .col {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.col {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-width: 0px;
+}
+
+.section-hero-images picture {
+    --to-scale: 1;
+    margin-top: 0px;
+    opacity: 0;
+    position: absolute;
+}
+
+.airpods {
+    mix-blend-mode: darken;
+    left: 35%;
+    top: 6%;
+    z-index: 10;
+    transform: scale(1.5) translate3d(-50%, -60%, 0);
+}
+
+.overview-hero-airpods {
+    display: block;
+    width: var(--width);
+    height: var(--height);
+    --width: 247px;
+    --height: 287px;
+}
+
+.section-hero-images .ipad {
+    right: 33px;
+    bottom: -580px;
+    transform: scale(1.11) translate3d(-30%, -3%, 0);
+}
+
+.overview-hero-ipad {
+    display: block;
+    width: var(--width);
+    height: var(--height);
+    --width: 1648px;
+    --height: 1650px;
+}
+
+.section-hero-images .iphone {
+    z-index: 10;
+    --scale: 1;
+    position: relative;
+    transform: scale(var(--scale)) translate3d(0, -100%, 0);
+    transform-origin: top;
+}
+
+@keyframes gradient {
+    100% {
+        background-position: 38% 100%;
+    }
+}
+
+.section-hero .siri-text {
+    -webkit-mask: url(/images/logos/hero_siri_large.svg);
+    mask: url(/images/logos/hero_siri_large.svg);
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    width: 384px;
+    height: 218px;
+    margin-left: -10px;
+    z-index: 10;
+    background: linear-gradient(121deg, #FE0576 24%, #EA12B6 40%, #38CBFF 60%);
+    background-size: 300% 100%;
+    animation: gradient 3s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+.text-hidden {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+}
+
+.overview-hero-homepod-mini {
+    display: block;
+    width: var(--width);
+    height: var(--height);
+    --width: 545px;
+    --height: 545px;
+}
+
+.section-hero-images .watch {
+    left: 18px;
+    top: 18px;
+    transform: scale(1.3) translate3d(70%, -65%, 0);
+}
+
+.overview-hero-watch {
+    --width: 342px;
+    --height: 342px;
+}
+
+.overview-hero-siri, .overview-hero-watch {
+    display: block;
+    width: var(--p-width);
+    height: var(--p-height);
+}
+
+.section-hero-images .homepod {
+    z-index: 10;
+    position: relative;
+    margin-bottom: var(--homepod-bottom);
+    transform: scale(1.3) translateY(50%);
+}
+
+.section-hero-images .apple-tv {
+    left: 0%;
+    bottom: -12%;
+    transform: scale(1.3) translate3d(70%, -12%, 0);
+}
+
+.overview-hero-apple-tv {
+    display: block;
+    width: var(--width);
+    height: var(--height);
+    --width: 636px;
+    --height: 636px;
+}
+
+@media only screen and (min-width: 1441px) {
+    .section-hero-images {
+        --middle-col-width: 55%;
+        max-width: 1340px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .section-hero-images {
+        --middle-col-width: 44%;
+        max-width: 1068px;
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    .section-hero-images {
+        min-height: 730px;
+    }
+    .section-hero {
+        --homepod-bottom: -170px;
+    }
+    .section-hero-images .airpods {
+        top: 16%;
+        transform: scale(1.5) translate3d(-110%, -95%, 0);
+    }
+    .section-hero-images .ipad {
+        right: -29px;
+        bottom: max(-80px, -10%);
+        transform: scale(1.2) translate3d(-75%, -30%, 0);
+    }
+
+    .section-hero .siri-text {
+        width: 254px;
+        height: 144px;
+    }
+
+    .section-hero-images .watch {
+        left: 0px;
+        top: 13%;
+        transform: scale(1.3) translate3d(88%, -107%, 0);
+    }
+
+    .section-hero-images .apple-tv {
+        bottom: max(-94px, -13%);
+        transform: scale(1.3) translate3d(107%, -45%, 0);
+    }
+}
+
+@media only screen and (max-width: 1068px) and (max-width: 1068px) {
+    .overview-hero-airpods {
+        --width: 181px !important;
+        --height: 197px !important;
+    }
+
+    .overview-hero-ipad {
+        --width: 315px !important;
+        --height: 658px !important;
+    }
+
+    .overview-hero-iphone {
+        --width: 284px;
+        --height: 194px;
+    }
+
+    .overview-hero-homepod-mini {
+        --width: 388px;
+        --height: 388px;
+    }
+
+    .overview-hero-apple-tv {
+        --width: 342px;
+        --height: 438px;
+    }
+}
+
+@media only screen and (max-width: 734px) and (min-height: 774px) {
+    .section-hero-images .ipad {
+        right: -98px;
+    }
+    .overview-hero-ipad {
+        --width: 268px;
+        --height: 559px;
+    }
+
+    .overview-hero-iphone {
+        --width: 209px;
+        --height: 148px;
+    }
+
+    .overview-hero-homepod-mini {
+        --width: 279px;
+        --height: 373px;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .section-hero-images {
+        --middle-col-width: 39%;
+        min-height: max(98vh, 665px);
+        min-width: 420px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-hero-images .ipad {
+        bottom: -20%;
+        transform: scale(1.2) translate3d(-50%, -10%, 0);
+    }
+    .section-hero .siri-text {
+        width: 154px !important;   
+        height: 88px !important;
+        margin-left: -5px !important;
+    }
+
+    .section-hero-images .watch {
+        left: -10px;
+        transform: scale(1.3) translate3d(75%, -50%, 0);
+    }
+}
+
+@media only screen and (max-width: 734px) and (min-height: 668px) {
+    .section-hero-images .watch {
+        top: 14%;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    .section-hero-images {
+        max-width: 1340px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 735px) and (max-width: 1068px) {
+    .section-hero-images .watch {
+        top: 6%;
+    }
+}
+
+.section-hero {
+    --homepod-bottom: -245px;
+    position: relative;
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+    overflow: hidden;
+}
