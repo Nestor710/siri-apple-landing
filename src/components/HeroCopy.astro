@@ -3,20 +3,12 @@
 ---
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {{
+    document.addEventListener("DOMContentLoaded", function () {
         interface ExtendedWindow extends Window {
             scrollHandlerActive?: boolean;
         }
         const extWindow = window as ExtendedWindow;
         
-        // Verificar si es un dispositivo móvil
-        const isMobile = window.innerWidth < 768; // Puedes ajustar este valor según tus breakpoints
-        
-        // Si es móvil, no aplicamos los efectos de parallax
-        if (isMobile) {
-            return;
-        }
-
         const parallaxElements = [
             document.querySelector(".parallax-0") as HTMLElement,
             document.querySelector(".parallax-1") as HTMLElement,
@@ -25,60 +17,50 @@
         ];
         const intensityFactors = [0.8, 1.5, 2.2, 2.8];
 
+        // Crear un único observer para reutilizar
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Añadir evento de scroll cuando el elemento es visible
                     window.addEventListener('scroll', handleScroll);
-                    (window as any).scrollHandlerActive = true;
+                    extWindow.scrollHandlerActive = true;
                 } else {
                     const allHidden = parallaxElements.every(el => {
                         const rect = el.getBoundingClientRect();
                         return (rect.bottom < 0 || rect.top > window.innerHeight);
                     });
-                    // Remover evento de scroll cuando el elemento no es visible
-                    if (allHidden && (window as any).scrollHandlerActive) {
+                    
+                    if (allHidden && extWindow.scrollHandlerActive) {
                         window.removeEventListener('scroll', handleScroll);
-                        (window as any).scrollHandlerActive = false;
+                        extWindow.scrollHandlerActive = false;
 
                         parallaxElements.forEach(el => {
-                            if(el) el.style.transform = 'matrix(0, 0, 0, 0, 0)';
+                            if(el) el.style.transform = 'translateY(0)';
                         });
                     }
-
                 }
             });
         }, {
             threshold: 0.1
         });
-        
-        // Función para manejar el efecto de elevación durante el scroll
+
         function handleScroll() {
             const viewHeight = window.innerHeight;
             
-            // Aplicar efecto a cada elemento parallax
             parallaxElements.forEach((element, index) => {
                 if (!element) return;
                 
-                // Obtener la posición del elemento en la ventana
                 const rect = element.getBoundingClientRect();
-                
-                // Calcular qué tan lejos está el elemento del centro de la ventana
                 const distanceFromCenter = (viewHeight / 2) - (rect.top + rect.height / 2);
                 
-                // Calcular el valor de elevación con diferentes intensidades
-                // Aplicamos un retraso progresivo según el índice
                 const elevationValue = Math.min(
                     Math.max(distanceFromCenter / 10 * intensityFactors[index], -60), 
                     60
                 );
                 
-                // Aplicar la transformación para elevar el elemento
                 element.style.transform = `matrix(1, 0, 0, 1, 0, ${-elevationValue})`; 
             });
         }
 
-        // Función debounce con tipos correctos
         function debounce<T extends (...args: any[]) => any>(
             func: T, 
             wait: number
@@ -91,40 +73,40 @@
                 timeout = window.setTimeout(() => func.apply(context, args), wait);
             };
         }
-    
-        // Añadir listener para cambios de tamaño de ventana
-        window.addEventListener('resize', debounce(function(): void {
+
+        // Función para configurar o limpiar los efectos de parallax
+        function setupParallaxEffects() {
             const nowMobile = window.innerWidth < 768;
 
-            // Si cambia a móvil, eliminar efectos
-            if (nowMobile && extWindow.scrollHandlerActive) {
-                console.log('Mobile');
+            // Limpiar cualquier estado anterior
+            window.removeEventListener('scroll', handleScroll);
+            extWindow.scrollHandlerActive = false;
+            
+            parallaxElements.forEach(el => {
+                if (!el) return;
                 
-                window.removeEventListener('scroll', handleScroll);
-                extWindow.scrollHandlerActive = false;
+                // Restaurar estilos
+                el.style.transform = 'translateY(0)';
+                el.style.transition = 'none';
                 
-                // Restaurar posiciones originales
-                parallaxElements.forEach(el => {
-                    el.style.transform = 'translateY(0)';
-                    el.style.transition = 'none';
-                });
-            }
-            // Si cambia a desktop, reactivar observer
-            else if (!nowMobile && !extWindow.scrollHandlerActive) {
-                console.log('Desktop');
-                
-                parallaxElements.forEach(element => {
-                    observer.observe(element);
-                });
-            }
-        }, 250));
+                // Desconectar cualquier observador anterior
+                observer.unobserve(el);
+            });
 
-        // Observar todos los elementos parallax solo en desktop
-        parallaxElements.forEach(element => {
-            if(element) observer.observe(element);
-        });
-        
-    }});
+            // Si no es móvil, configurar parallax
+            if (!nowMobile) {
+                parallaxElements.forEach(element => {
+                    if(element) observer.observe(element);
+                });
+            }
+        }
+
+        // Añadir listener para cambios de tamaño de ventana
+        window.addEventListener('resize', debounce(setupParallaxEffects, 250));
+
+        // Configuración inicial
+        setupParallaxEffects();
+    });
 </script>
 
 <div class="section-hero-copy hero-copy">
