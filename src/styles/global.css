@@ -127,3 +127,25 @@ html {
         --section-content-wide: 1344px;
     }
 }
+
+.typography-section-headline {
+    font-size: 260px;
+    line-height: .6923076923;
+    font-weight: 600;
+    letter-spacing: -0.0031em;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+@media only screen and (max-width: 1068px) {
+    .typography-section-headline {
+        font-size: 172px;
+        line-height: .6984344186;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .typography-section-headline {
+        font-size: 82px;
+        line-height: .8048780488;
+    }
+}
