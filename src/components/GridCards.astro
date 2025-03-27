@@ -1,0 +1,76 @@
+---
+import GridCard from "./GridCard.astro";
+---
+
+<div class="pl-0 pr-0 relative ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
+    <GridCard bgDark>
+        <div class="p-[var(--tile-padding)]">
+            <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+                <source srcset="/images/logos/go_quote_purple_dark_bg_small.png" media="(max-width:734px)"> 
+                <source srcset="/images/logos/go_quote_purple_dark_bg_medium.png" media="(max-width:1068px)">
+                <img src="/images/logos/go_quote_purple_dark_bg_large.png" alt="Hey Siri">
+            </picture>
+            <h3 class="typography-headline text-white">
+                <span class="bg-gradient-to-tr from-[#C774C7] to-[#FFA6CB] to-80% bg-clip-text text-transparent">Siri,</span>
+                remind me to water the plants when I get home
+            </h3>
+        </div>
+        <picture class="inline-flex justify-center pb-[var(--tile-padding)] self-center overview-go-title-1">
+            <source srcset="/images/logos/go_tile_1_small.png" media="(max-width:734px)"> 
+            <source srcset="/images/logos/go_tile_1_medium.png" media="(max-width:1068px)">
+            <img src="/images/logos/go_tile_1_large.png" alt="Go">
+        </picture>
+    </GridCard>
+    <GridCard>
+        <div class="p-[var(--tile-padding)]">
+            <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+                <source srcset="/images/logos/go_quote_purple_light_bg_small.png" media="(max-width:734px)"> 
+                <source srcset="/images/logos/go_quote_purple_light_bg_medium.png" media="(max-width:1068px)">
+                <img src="/images/logos/go_quote_purple_light_bg_large.png" alt="Hey Siri">
+            </picture>
+            <h3 class="typography-headline">
+                <span class="bg-gradient-to-tr from-[#224D88] from-32% via-[#935893] via-60% to-[#E896B8] to-80% bg-clip-text text-transparent">Siri,</span>
+                where did
+                <br>
+                I park my car?
+            </h3>
+        </div>
+        <picture class="flex self-end items-end pb-0 justify-end justify-self-center overview-go-tile-2">
+            <source srcset="/images/logos/go_tile_2_small.jpg" media="(max-width:734px)"> 
+            <source srcset="/images/logos/go_tile_2_medium.jpg" media="(max-width:1068px)">
+            <img src="/images/logos/go_tile_2_large.jpg" alt="Go">
+        </picture>
+    </GridCard>
+</div>
+
+<style>
+    .overview-go-quote-dark-bg {
+        width: var(--p-width);
+        height: var(--p-height);
+        --p-width: 47px;
+        --p-height: 44px;
+    }
+
+    .typography-headline {
+        font-size: 48px;
+        line-height: 1.0834933333;
+        font-weight: 600;
+        letter-spacing: -0.003em;
+        font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    }
+
+    .overview-go-tile-1 {
+        width: var(--width);
+        height: var(--height);
+        --width: 435px;
+        --height: 219px;
+    }
+
+    .overview-go-tile-2 {
+        display: block;
+        width: var(--width);
+        height: var(--height);
+        --width: 442px;
+        --height: 473px;
+    }
+</style>

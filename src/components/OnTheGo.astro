@@ -1,5 +1,9 @@
+---
+import GridCards from "./GridCards.astro";
+---
+
 <section class="section section-on-the-go section-scenario will-change">
-    <span class="gradient-bg gradient-bg-on-the-go" style="--bg-height: 40.42778793418647%; opacity: 0;"></span>
+    <span class="gradient-bg gradient-bg-on-the-go" style="--bg-height: 58.42778793418647%; opacity: 0;"></span>
     <div class="content relative w-[var(--section-content)] mr-auto ml-auto">
         <div class="scenario-intro relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
             <h2 class="typography-section-headline headline">
@@ -36,10 +40,10 @@
             <div class="go-iphone-copy w-full col-start-1 col-end-13 row-start-2 row-end-3 rounded-[var(--tile-border-radius)] box-border bg-white py-[var(--tile-padding)] grid relative min-h-[var(--main-tile-height)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
                 <div class="hey-siri-copy parallax-this fade-it">
                     <picture class="overview-quote-hey-siri-light mt-5">
-                        <source srcset="/images/logos/go_quote_light_bg_small.png" media="(max-width:734px)"> 
-                        <source srcset="/images/logos/go_quote_light_bg_medium.png" media="(max-width:1068px)">
-                        <source srcset="/images/logos/go_quote_light_bg_large.png" media="(min-width:0px)">
-                        <img src="/images/logos/go_quote_light_bg_large.png" alt="Hey Siri">
+                        <source srcset="/images/logos/go_quote_purple_light_bg_small.png" media="(max-width:734px)"> 
+                        <source srcset="/images/logos/go_quote_purple_light_bg_medium.png" media="(max-width:1068px)">
+                        <source srcset="/images/logos/go_quote_purple_light_bg_large.png" media="(min-width:0px)">
+                        <img src="/images/logos/go_quote_purple_light_bg_large.png" alt="Hey Siri">
                     </picture>
                     <h3 class="typography-headline-elevated !text-[59px]">
                         <span class="gradient">Siri,</span>
@@ -49,6 +53,7 @@
                 </div>
             </div>
         </div>
+        <GridCards />
     </div>
 </section>
 
