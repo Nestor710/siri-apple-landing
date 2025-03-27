@@ -16,89 +16,29 @@
                 </picture>
             </div>
         </div>
+        <div class="grid-main mx-auto grid gap-x-6 gap-y-6 px-6 grid-cols-12 relative pl-0 pr-0">
+            <div class="copy-container parallax-this fade-it">
+                <!-- <p class="copy typography-scenario-intro-copy">
+                    Do it all even when your hands are full. Stay in touch, set reminders, 
+                    or find where you parked. And with back-to-back requests, you can give 
+                    a command, then follow up with another once it’s complete — without having 
+                    to say “Siri” again.
+                </p> -->
+            </div>
+        </div>
     </div>
 </section>
-<div class="h-[1000px]"></div>
 
 <script>
-import { debounce } from "@/utils/debounce";
+    import { setupParallaxEffect } from "@/utils/parallaxEffect";
 
-    document.addEventListener("DOMContentLoaded", () => {
-        interface ExtendedWindow extends Window {
-            scrollHandlerActive?: boolean;
-        }
-        const extWindow = window as ExtendedWindow;
-
-        const parallaxThis = document.querySelector("#airpods-on-the-go") as HTMLElement;
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Agregamos el listener solo si no está activo
-                    if (!extWindow.scrollHandlerActive) {
-                        window.addEventListener('scroll', handleScroll);
-                        extWindow.scrollHandlerActive = true;
-                    }
-                } else {
-                    // Eliminamos el listener solo si el elemento está completamente fuera
-                    const rect = parallaxThis.getBoundingClientRect();
-                    const isCompletelyOutOfView = rect.bottom < 0 || rect.top > window.innerHeight;
-                    
-                    if (isCompletelyOutOfView && extWindow.scrollHandlerActive) {
-                        window.removeEventListener('scroll', handleScroll);
-                        extWindow.scrollHandlerActive = false;
-                        // Eliminamos la línea que forzaba el reset a 150
-                    }
-                }
-            });
-        }, {
-            threshold: 0 // Detecta cualquier porción visible
-        });
-        
-        function handleScroll() {
-            const viewHeight = window.innerHeight;
-            if (!parallaxThis) return;
-            
-            const rect = parallaxThis.getBoundingClientRect();
-            
-            const elementCenter = rect.top + rect.height / 2;
-            const distanceFromCenter = elementCenter - viewHeight / 2; 
-            
-            // Ajusta la velocidad y límites del efecto parallax
-            const elevationValue = Math.min(
-                Math.max(distanceFromCenter / 9, -4), 
-                60 * 5
-            );
-            
-            parallaxThis.style.transform = `matrix(1, 0, 0, 1, 0, ${elevationValue})`;
-        }
-
-        function setupParallaxEffects() {
-            const nowMobile = window.innerWidth < 768;
-
-            // Limpiar cualquier estado anterior
-            window.removeEventListener('scroll', handleScroll);
-            extWindow.scrollHandlerActive = false;
-            
-            if (!parallaxThis) return;
-            
-            // Restaurar estilos
-            parallaxThis.style.transform = 'matrix(1, 0, 0, 1, 0, 150)';
-            
-            // Desconectar cualquier observador anterior
-            observer.unobserve(parallaxThis);
-
-            // Si no es móvil, configurar parallax
-            if (!nowMobile) {
-                observer.observe(parallaxThis);
-            }
-        }
-        // Añadir listener para cambios de tamaño de ventana
-        window.addEventListener('resize', debounce(setupParallaxEffects, 250));
-
-        // Configuración inicial
-        setupParallaxEffects();
-    })
+    setupParallaxEffect({
+        selector: '#airpods-on-the-go',
+        startElevation: 90,
+        endElevation: 0,
+        easingFactor: 0.1,
+        progressScale: 3.5
+    });
 </script>
 
 <style>
@@ -158,5 +98,37 @@ import { debounce } from "@/utils/debounce";
         background-clip: text;
         background-image: linear-gradient(45deg, #224D88 32%, #935893 60%, #E896B8 80%);
         padding: 10px 0 55px;
+    }
+
+    .section-scenario .grid-main {
+        -webkit-clip-path: inset(-200vh 0 0 0);
+        clip-path: inset(-200vh 0 0 0);
+        margin-bottom: 24px;
+    }
+
+    .section-on-the-go .grid-main .copy-container, .section-on-the-go .grid-main .hey-siri {
+        grid-column-start: 7;
+        padding-left: var(--tile-padding);
+        padding-right: var(--tile-padding);
+    }
+
+    .will-change .parallax-this.fade-it {
+        will-change: opacity;
+    }
+
+    .section-on-the-go .copy-container .copy {
+        max-width: 375px;
+    }
+
+    .section-scenario .copy-container .copy {
+        margin-bottom: 0px;
+    }
+
+    .typography-scenario-intro-copy {
+        font-size: 28px;
+        line-height: 1.1428571429;
+        font-weight: 600;
+        letter-spacing: .007em;
+        font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     }
 </style>
