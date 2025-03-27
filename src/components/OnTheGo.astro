@@ -16,14 +16,36 @@
                 </picture>
             </div>
         </div>
-        <div class="grid-main mx-auto grid gap-x-6 gap-y-6 px-6 grid-cols-12 relative pl-0 pr-0">
-            <div class="copy-container parallax-this fade-it">
-                <!-- <p class="copy typography-scenario-intro-copy">
+        <div class="grid-main grid grid-cols-12 gap-6 px-6 mx-auto pl-0 pr-0 relative">
+            <div class="copy-container mb-20 w-[525px] opacity-[1] pl-[var(--tile-padding)] pr-[var(--tile-padding)] text-[#86868b] row-span-[1] mt-[190px] will-change parallax-this grid-start-7">
+                <p class="copy typography-scenario-intro-copy max-w-[388px] mb-0">
                     Do it all even when your hands are full. Stay in touch, set reminders, 
                     or find where you parked. And with back-to-back requests, you can give 
                     a command, then follow up with another once it’s complete — without having 
                     to say “Siri” again.
-                </p> -->
+                </p>
+            </div>
+            <div class="image-wrapper-sticky pl-[var(--tile-padding)] col-start-1 col-end-7 row-start-1 row-end-3">
+                <picture class="overview-go-iphone sticky top-[40vh] max-w-[100%] mt-[-20px] block">
+                    <source srcset="/images/accessories/go_iphone_small.png" media="(max-width:734px)"> 
+                    <source srcset="/images/accessories/go_iphone_medium.png" media="(max-width:1068px)">
+                    <source srcset="/images/accessories/go_iphone_large.png" media="(min-width:0px)">
+                    <img src="/images/accessories/go_iphone_large.png" alt="iPhone">
+                </picture>
+            </div>
+            <div class="go-iphone-copy w-full col-start-1 col-end-13 row-start-2 row-end-3 rounded-[var(--tile-border-radius)] box-border bg-red-400 py-[var(--tile-padding)] grid relative min-h-[var(--main-tile-height)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
+                <div class="hey-siri-copy parallax-this fade-it">
+                    <picture class="overview-quote-hey-siri-light mt-5">
+                        <source srcset="/images/logos/go_quote_light_bg_small.png" media="(max-width:734px)"> 
+                        <source srcset="/images/logos/go_quote_light_bg_medium.png" media="(max-width:1068px)">
+                        <source srcset="/images/logos/go_quote_light_bg_large.png" media="(min-width:0px)">
+                        <img src="/images/logos/go_quote_light_bg_large.png" alt="Hey Siri">
+                    </picture>
+                    <h3 class="typography-headline-elevated !text-[59px]">
+                        <span class="gradient">Siri,</span>
+                        text Rigo, ‘I’m on my way’
+                    </h3>
+                </div>
             </div>
         </div>
     </div>
@@ -116,13 +138,6 @@
         will-change: opacity;
     }
 
-    .section-on-the-go .copy-container .copy {
-        max-width: 375px;
-    }
-
-    .section-scenario .copy-container .copy {
-        margin-bottom: 0px;
-    }
 
     .typography-scenario-intro-copy {
         font-size: 28px;
@@ -130,5 +145,55 @@
         font-weight: 600;
         letter-spacing: .007em;
         font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    }
+
+    .section-scenario .grid-main .image-wrapper-sticky {
+        z-index: 1;
+        display: flex;
+        -webkit-clip-path: inset(-50vh -50% 0px -50%);
+        clip-path: inset(-50vh -50% 0px -50%);
+        pointer-events: none;
+    }
+
+    .section-on-the-go .image-wrapper-sticky picture {
+        width: var(--width);
+        height: var(--height);
+        --width: 440px;
+        --height: 1243px;
+        pointer-events: none;
+        height: calc(var(--main-tile-height) - var(--tile-padding));
+    }
+
+    .go-iphone-coypy {
+        -webkit-clip-path: inset(-200vh 0 0 0);
+        clip-path: inset(-200vh 0 0 0);
+    }
+
+    .section-scenario .hey-siri-copy {
+        grid-column-end: 13;
+        grid-column-start: 8;
+        padding-right: var(--tile-padding);
+    }
+
+    .section-on-the-go .go-iphone-copy .hey-siri-copy {
+        grid-column-start: 7;
+        padding-left: var(--tile-padding);
+    }
+
+    .overview-quote-hey-siri-light {
+        display: block;
+        width: var(--p-width);
+        height: var(--p-height);
+        --p-width: 47px;
+        --p-height: 44px;
+    }
+
+    @media only screen and (min-width: 735px) {
+        .hey-siri-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-self: center;
+        }
     }
 </style>
