@@ -44,7 +44,7 @@ export function createBackgroundOpacityObserver(
             if (entry.isIntersecting) {
                 // Transición de 0 a 1 cuando entra en el viewport
                 animateOpacity(bgReference, performance.now(), 0, 1);
-            } else {
+            } else if(entry.boundingClientRect.bottom > 0) {
                 // Transición de 1 a 0 cuando sale del viewport
                 animateOpacity(bgReference, performance.now(), 1, 0);
             }
