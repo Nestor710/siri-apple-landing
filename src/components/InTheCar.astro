@@ -11,20 +11,114 @@ import BgGradientSection from "./BgGradientSection.astro";
                 car.
             </h2>
         </div>
+        <div class="grid-main static mb-5 pl-0 pr-0 ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
+            <div class="container-car-copy 2xl:max-h-[160px] max-h-[192px] w-[575px] 2xl:pr-[var(--tile-padding)] pr-0 mt-[-105px] col-start-7 parallax-this fade-it text-[#4e4e52] mb-[70px] row-span-1" style="opacity: 1;"> 
+                <p class="2xl:max-w-[unset] max-w-[440px] mb-0 typography-scenario-intro-copy">
+                    Drive safer with Siri. Use the button on your wheel with CarPlay
+                    or just your voice to get directions, make calls, and let friends 
+                    know when you’ll arrive. All while you keep your eyes on the road.
+                </p>
+            </div>
+            <div class="main-tile w-full h-full pb-0 z-1 static grid col-start-1 col-end-13 row-start-2 row-end-3 box-border min-h-[var(--main-tile-height)] rounded-[var(--tile-border-radius)] px-[var(--tile-padding)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
+                <div class="hey-siri col-start-7 col-end-12 self-start max-w-[450px] pb-[var(--final-img-height)] pr-0 md:flex md:flex-col md:justify-center md:self-center">
+                    <picture class="overview-car-mic mb-5 block">
+                        <source srcset="/images/logos/car_mic_medium.png" media="(max-width:1068px)">
+                        <source srcset="/images/logos/car_mic_large.png" media="(max-width: 0px)">
+                        <img src="/images/logos/car_mic_large.png" alt="Car Mic">
+                    </picture>
+                    <h3 class="typography-headline-elevated text-[#1d1d1f]">
+                        Give me directions home
+                    </h3>
+                </div>
+                <div class="image-wrapper will-change-transform absolute left-0 z-[100] w-full origin-top pointer-events-none h-auto">
+                    <picture class="overview-car-carplay max-w-full block">
+                        <source srcset="/images/logos/car_carplay_small.jpg" media="(max-width:734px)">
+                        <source srcset="/images/logos/car_carplay_medium.jpg" media="(max-width: 1068px)">
+                        <source srcset="/images/logos/car_carplay_large.jpg" media="(max-width: 1440px)">
+                        <source srcset="/images/logos/car_carplay_xlarge.jpg" media="(min-width: 0px)">
+                        <img src="/images/logos/car_carplay_xlarge.jpg" alt="Car Carplay">
+                    </picture>
+                </div>
+            </div>
+        </div> 
     </div>
 </BgGradientSection>
 
+<script>
+    import { setupParallaxEffect } from "@/utils/parallaxEffect";
+
+    setupParallaxEffect({
+        selector: '.container-car-copy',
+        startElevation: 0,
+        endElevation: 0,
+        easingFactor: 0.1,
+        progressScale: 0.999,
+        type: 'opacity'
+    });
+</script>
+
 <style>
-    .section-in-the-car .headline {
+    .headline {
         --tile-y: -150px;
     }
 
-    .section-in-the-car {
-        --final-img-height: 410px;
+    .grid-main {
+        -webkit-clip-path: unset;
+        clip-path: unset;
     }
+
+    .copy-container {
+        --y-offset: -105px;
+    }
+
+    .overview-car-mic {
+        width: var(--width);
+        height: var(--height);
+        --width: 46px;
+        --height: 46px;
+    }
+
+    .image-wrapper picture img {
+        -webkit-mask-image: url('/images/logos/car_carplay_mask_xlarge.png');
+        mask-image: url('/images/logos/car_carplay_mask_xlarge.png');
+        -webkit-mask-size: cover;
+        mask-size: cover;
+    }
+
+    .main-tile {
+        -webkit-clip-path: inset(-100vh -100vw round var(--tile-border-radius));
+        clip-path: inset(-100vh -100vw round var(--tile-border-radius));
+        --main-tile-height: 714px;
+    }
+
+    .image-wrapper {
+        top: 604px;
+        --scroll-offset: 10vh;
+        --image-offset: 100px;
+    }
+
+    .overview-car-carplay {
+        width: var(--width);
+        height: var(--height);
+        --width: 1440px;
+        --height: 684px;
+    }
+
     @media only screen and (min-width: 1441px) {
-        .section-in-the-car {
-            --final-img-height: 450px;
+        .main-tile {
+            --main-tile-height: 780px;
+        }
+
+        .image-wrapper {
+            top: 518px;
+            --scroll-offset: 0;
+        }
+    }
+
+    @media only screen and (min-width: 1441px) and (min-width: 1441px) {
+        .overview-car-carplay {
+            --width: 3008px;
+            --height: 1543px;
         }
     }
 </style>

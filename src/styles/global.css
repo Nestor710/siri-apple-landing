@@ -151,3 +151,13 @@ html {
         line-height: .8048780488;
     }
 }
+
+.section-in-the-car {
+    --final-img-height: 410px;
+}
+
+@media only screen and (min-width: 1441px) {
+    .section-in-the-car {
+        --final-img-height: 450px;
+    }
+}

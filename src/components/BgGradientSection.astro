@@ -10,9 +10,7 @@ const { bg, height = '58.42778793418647%', className } = Astro.props;
 
 <section class={`${className} section section-on-the-go py-[var(--section-padding)] relative rounded-[60px] will-change`}>
     <span class={`${bg} gradient-bg-on-the-go absolute left-0 top-0 w-full h-full bg-bottom bg-no-repeat bg-[length:100%_var(--bg-height)] opacity-0 z-0 transition-opacity duration-750 ease-in-out overflow-hidden rounded-[60px]`} style={`--bg-height: ${height}; opacity: 0;`}></span>
-    <div class="content relative w-[var(--section-content)] mr-auto ml-auto">
-        <slot />
-    </div>
+    <slot />
 </section>
 
 <style>
