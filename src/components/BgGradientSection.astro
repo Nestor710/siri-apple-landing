@@ -1,0 +1,33 @@
+---
+interface Props {
+    bg: 'gradient-bg-purple' | 'gradient-bg-blue' | 'gradient-bg-green' | 'gradient-bg-orange' | 'gradient-bg-pink';
+    height?: string;
+}
+
+const { bg, height = '58.42778793418647%' } = Astro.props;
+---
+
+<section class="section section-on-the-go p-[var(--section-padding)] relative rounded-[60px] will-change">
+    <span class={`${bg} gradient-bg-on-the-go absolute left-0 top-0 w-full h-full bg-bottom bg-no-repeat bg-[length:100%_var(--bg-height)] opacity-0 z-0 transition-opacity duration-750 ease-in-out overflow-hidden rounded-[60px]`} style={`--bg-height: ${height}; opacity: 0;`}></span>
+    <div class="content relative w-[var(--section-content)] mr-auto ml-auto">
+        <slot />
+    </div>
+</section>
+
+<style>
+    section {
+        --main-tile-height: 504px;
+    }
+
+    .section-scenario.will-change .gradient-bg {
+        will-change: opacity;
+    }
+
+    .gradient-bg-purple {
+        background-image: linear-gradient(180deg, #fbfbfd, #E795B7 20%, #935893 45%, #224D88);
+    }
+
+    .will-change .parallax-this.fade-it {
+        will-change: opacity;
+    }
+</style>

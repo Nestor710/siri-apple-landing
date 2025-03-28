@@ -1,61 +1,59 @@
 ---
+import BgGradientSection from "./BgGradientSection.astro";
 import GridCards from "./GridCards.astro";
 ---
 
-<section class="section section-on-the-go section-scenario will-change">
-    <span class="gradient-bg gradient-bg-on-the-go" style="--bg-height: 58.42778793418647%; opacity: 0;"></span>
-    <div class="content relative w-[var(--section-content)] mr-auto ml-auto">
-        <div class="scenario-intro relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
-            <h2 class="typography-section-headline headline">
-                On the
-                <br>
-                go.
-            </h2>
-            <div id="airpods-on-the-go" class="scenario-image parallax-this">
-                <picture class="overview-airpods-on-the-go">
-                    <source srcset="/images/accessories/go_airpods_small.png" media="(max-width:734px)"> 
-                    <source srcset="/images/accessories/go_airpods_medium.png" media="(max-width:1068px)">
-                    <source srcset="/images/accessories/go_airpods_large.png" media="(min-width:0px)">
-                    <img src="/images/accessories/go_airpods_large.png" alt="AirPods">
-                </picture>
-            </div>
+<BgGradientSection bg="gradient-bg-purple">
+    <div class="scenario-intro relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
+        <h2 class="typography-section-headline headline">
+            On the
+            <br>
+            go.
+        </h2>
+        <div id="airpods-on-the-go" class="absolute mt-0 z-10 right-[26%] top-[41%] parallax-this">
+            <picture class="overview-airpods-on-the-go">
+                <source srcset="/images/accessories/go_airpods_small.png" media="(max-width:734px)"> 
+                <source srcset="/images/accessories/go_airpods_medium.png" media="(max-width:1068px)">
+                <source srcset="/images/accessories/go_airpods_large.png" media="(min-width:0px)">
+                <img src="/images/accessories/go_airpods_large.png" alt="AirPods">
+            </picture>
         </div>
-        <div class="grid-main grid grid-cols-12 gap-6 px-6 mx-auto pl-0 pr-0 relative">
-            <div class="copy-container mb-20 w-[525px] opacity-[1] pl-[var(--tile-padding)] pr-[var(--tile-padding)] text-[#4e4e52] row-span-[1] mt-[190px] will-change parallax-this grid-start-7">
-                <p class="copy typography-scenario-intro-copy max-w-[388px] mb-0">
-                    Do it all even when your hands are full. Stay in touch, set reminders, 
-                    or find where you parked. And with back-to-back requests, you can give 
-                    a command, then follow up with another once it’s complete — without having 
-                    to say “Siri” again.
-                </p>
-            </div>
-            <div class="image-wrapper-sticky pl-[var(--tile-padding)] col-start-1 col-end-7 row-start-1 row-end-3">
-                <picture class="overview-go-iphone sticky top-[40vh] max-w-[100%] mt-[-20px] block">
-                    <source srcset="/images/accessories/go_iphone_small.png" media="(max-width:734px)"> 
-                    <source srcset="/images/accessories/go_iphone_medium.png" media="(max-width:1068px)">
-                    <source srcset="/images/accessories/go_iphone_large.png" media="(min-width:0px)">
-                    <img src="/images/accessories/go_iphone_large.png" alt="iPhone">
-                </picture>
-            </div>
-            <div class="go-iphone-copy w-full col-start-1 col-end-13 row-start-2 row-end-3 rounded-[var(--tile-border-radius)] box-border bg-white py-[var(--tile-padding)] grid relative min-h-[var(--main-tile-height)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
-                <div class="hey-siri-copy parallax-this fade-it">
-                    <picture class="overview-quote-hey-siri-light mt-5">
-                        <source srcset="/images/logos/go_quote_purple_light_bg_small.png" media="(max-width:734px)"> 
-                        <source srcset="/images/logos/go_quote_purple_light_bg_medium.png" media="(max-width:1068px)">
-                        <source srcset="/images/logos/go_quote_purple_light_bg_large.png" media="(min-width:0px)">
-                        <img src="/images/logos/go_quote_purple_light_bg_large.png" alt="Hey Siri">
-                    </picture>
-                    <h3 class="typography-headline-elevated !text-[59px]">
-                        <span class="gradient">Siri,</span>
-                        text Rigo,
-                        <span id="bg-reference">‘I’m on my way’</span>
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <GridCards />
     </div>
-</section>
+    <div class="grid-main grid grid-cols-12 gap-6 px-6 mx-auto pl-0 pr-0 relative">
+        <div class="copy-container mb-20 w-[525px] opacity-[1] pl-[var(--tile-padding)] pr-[var(--tile-padding)] text-[#4e4e52] row-span-[1] mt-[190px] will-change parallax-this grid-start-7">
+            <p class="copy typography-scenario-intro-copy max-w-[388px] mb-0">
+                Do it all even when your hands are full. Stay in touch, set reminders, 
+                or find where you parked. And with back-to-back requests, you can give 
+                a command, then follow up with another once it’s complete — without having 
+                to say “Siri” again.
+            </p>
+        </div>
+        <div class="image-wrapper-sticky pl-[var(--tile-padding)] col-start-1 col-end-7 row-start-1 row-end-3">
+            <picture class="overview-go-iphone sticky top-[40vh] max-w-[100%] mt-[-20px] block">
+                <source srcset="/images/accessories/go_iphone_small.png" media="(max-width:734px)"> 
+                <source srcset="/images/accessories/go_iphone_medium.png" media="(max-width:1068px)">
+                <source srcset="/images/accessories/go_iphone_large.png" media="(min-width:0px)">
+                <img src="/images/accessories/go_iphone_large.png" alt="iPhone">
+            </picture>
+        </div>
+        <div class="go-iphone-copy w-full col-start-1 col-end-13 row-start-2 row-end-3 rounded-[var(--tile-border-radius)] box-border bg-white py-[var(--tile-padding)] grid relative min-h-[var(--main-tile-height)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
+            <div class="hey-siri-copy parallax-this fade-it">
+                <picture class="overview-quote-hey-siri-light mt-5">
+                    <source srcset="/images/logos/go_quote_purple_light_bg_small.png" media="(max-width:734px)"> 
+                    <source srcset="/images/logos/go_quote_purple_light_bg_medium.png" media="(max-width:1068px)">
+                    <source srcset="/images/logos/go_quote_purple_light_bg_large.png" media="(min-width:0px)">
+                    <img src="/images/logos/go_quote_purple_light_bg_large.png" alt="Hey Siri">
+                </picture>
+                <h3 class="typography-headline-elevated !text-[59px]">
+                    <span class="bg-gradient-to-tr from-[rgb(34,77,136)] from-32% via-[rgb(147,88,147)] via-60% to-[rgb(232,150,184)] to-80% bg-clip-text text-transparent">Siri,</span>
+                    text Rigo,
+                    <span id="bg-reference">‘I’m on my way’</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <GridCards />
+</BgGradientSection>
 
 <script>
     import { setupParallaxEffect } from "@/utils/parallaxEffect";
@@ -93,81 +91,6 @@ import GridCards from "./GridCards.astro";
 </script>
 
 <style>
-    .overview-airpods-on-the-go {
-        display: block;
-        width: var(--width);
-        height: var(--height);
-        --width: 327px;
-        --height: 335px;
-    }
-
-    .section-on-the-go {
-        --main-tile-height: 504px;
-    }
-
-    .section-on-the-go .scenario-image {
-        position: absolute;
-        margin-top: 0px;
-        z-index: 1;
-        right: 26%;
-        top: 41%;
-    }
-
-    .section-scenario {
-        padding: var(--section-padding) 0;
-        position: relative;
-        border-radius: 60px;
-    }
-
-    .section-scenario.will-change .gradient-bg {
-        will-change: opacity;
-    }
-
-    .section-scenario .gradient-bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-position: bottom;
-        background-repeat: no-repeat;
-        background-size: 100% var(--bg-height);
-        opacity: 0;
-        z-index: 0;
-        transition: opacity .75s ease-in-out;
-        overflow: hidden;
-        border-radius: 60px;
-    }
-
-    .section-on-the-go .gradient-bg {
-        background-image: linear-gradient(180deg, #fbfbfd, #E795B7 20%, #935893 45%, #224D88);
-    }
-
-    .section-on-the-go .headline {
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        background-image: linear-gradient(45deg, #224D88 32%, #935893 60%, #E896B8 80%);
-        padding: 10px 0 55px;
-    }
-
-    .section-scenario .grid-main {
-        -webkit-clip-path: inset(-200vh 0 0 0);
-        clip-path: inset(-200vh 0 0 0);
-        margin-bottom: 24px;
-    }
-
-    .section-on-the-go .grid-main .copy-container, .section-on-the-go .grid-main .hey-siri {
-        grid-column-start: 7;
-        padding-left: var(--tile-padding);
-        padding-right: var(--tile-padding);
-    }
-
-    .will-change .parallax-this.fade-it {
-        will-change: opacity;
-    }
-
-
     .typography-scenario-intro-copy {
         font-size: 28px;
         line-height: 1.1428571429;
@@ -176,7 +99,45 @@ import GridCards from "./GridCards.astro";
         font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     }
 
-    .section-scenario .grid-main .image-wrapper-sticky {
+    .go-iphone-coypy {
+        -webkit-clip-path: inset(-200vh 0 0 0);
+        clip-path: inset(-200vh 0 0 0);
+    }
+
+    .hey-siri-copy {
+        grid-column-end: 13;
+        grid-column-start: 8;
+        padding-right: var(--tile-padding);
+    }
+
+    .overview-airpods-on-the-go {
+        display: block;
+        width: var(--width);
+        height: var(--height);
+        --width: 327px;
+        --height: 335px;
+    }
+
+    .go-iphone-copy .hey-siri-copy {
+        grid-column-start: 7;
+        padding-left: var(--tile-padding);
+    }
+
+    .headline {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-image: linear-gradient(45deg, #224D88 32%, #935893 60%, #E896B8 80%);
+        padding: 10px 0 55px;
+    }
+
+    .grid-main {
+        -webkit-clip-path: inset(-200vh 0 0 0);
+        clip-path: inset(-200vh 0 0 0);
+        margin-bottom: 24px;
+    }
+
+    .grid-main .image-wrapper-sticky {
         z-index: 1;
         display: flex;
         -webkit-clip-path: inset(-50vh -50% 0px -50%);
@@ -184,29 +145,19 @@ import GridCards from "./GridCards.astro";
         pointer-events: none;
     }
 
-    .section-on-the-go .image-wrapper-sticky picture {
+    .grid-main .copy-container, .grid-main .hey-siri {
+        grid-column-start: 7;
+        padding-left: var(--tile-padding);
+        padding-right: var(--tile-padding);
+    }
+
+    .image-wrapper-sticky picture {
         width: var(--width);
         height: var(--height);
         --width: 440px;
         --height: 1243px;
         pointer-events: none;
         height: calc(var(--main-tile-height) - var(--tile-padding));
-    }
-
-    .go-iphone-coypy {
-        -webkit-clip-path: inset(-200vh 0 0 0);
-        clip-path: inset(-200vh 0 0 0);
-    }
-
-    .section-scenario .hey-siri-copy {
-        grid-column-end: 13;
-        grid-column-start: 8;
-        padding-right: var(--tile-padding);
-    }
-
-    .section-on-the-go .go-iphone-copy .hey-siri-copy {
-        grid-column-start: 7;
-        padding-left: var(--tile-padding);
     }
 
     .overview-quote-hey-siri-light {

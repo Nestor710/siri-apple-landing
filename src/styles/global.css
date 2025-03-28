@@ -79,12 +79,6 @@ html {
     margin-right: auto;
 }
 
-.section-on-the-go .gradient {
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-image: linear-gradient(45deg, rgb(34, 77, 136) 32%, rgb(147, 88, 147) 60%, rgb(232, 150, 184) 80%);
-}
-
 
 .section-in-the-car h2 {
     --tile-y: -150px;
