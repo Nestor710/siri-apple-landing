@@ -116,6 +116,14 @@ html {
     border: 0;
 }
 
+.typography-scenario-intro-copy {
+    font-size: 28px;
+    line-height: 1.1428571429;
+    font-weight: 600;
+    letter-spacing: .007em;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
 @media only screen and (min-width: 1441px) {
     :root {
         --section-content-wide: 1344px;
