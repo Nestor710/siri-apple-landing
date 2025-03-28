@@ -2,7 +2,12 @@
 import BgGradientSection from "./BgGradientSection.astro";
 ---
 
-<BgGradientSection className="section-in-the-car" bg="gradient-bg-blue">
+<BgGradientSection 
+    className="section-in-the-car" 
+    bg="gradient-bg-blue" 
+    spanBgClass="gradient-bg-in-the-car"
+    height="74.93091196210028%"
+>
     <div class="static w-[var(--section-content)] mr-auto ml-auto">
         <div class="relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
             <h2 class="typography-section-headline headline bg-gradient-to-tr from-[#381479] from-20% via-[#3D5791] via-35% to-[#80D6E1] to-75% bg-clip-text text-transparent pb-2.5">
@@ -19,14 +24,14 @@ import BgGradientSection from "./BgGradientSection.astro";
                     know when you’ll arrive. All while you keep your eyes on the road.
                 </p>
             </div>
-            <div class="main-tile w-full h-full pb-0 z-1 static grid col-start-1 col-end-13 row-start-2 row-end-3 box-border min-h-[var(--main-tile-height)] rounded-[var(--tile-border-radius)] px-[var(--tile-padding)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
+            <div class="main-tile bg-white w-full h-full pb-0 z-1 static grid col-start-1 col-end-13 row-start-2 row-end-3 box-border min-h-[var(--main-tile-height)] rounded-[var(--tile-border-radius)] px-[var(--tile-padding)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12">
                 <div class="hey-siri col-start-7 col-end-12 self-start max-w-[450px] pb-[var(--final-img-height)] pr-0 md:flex md:flex-col md:justify-center md:self-center">
                     <picture class="overview-car-mic mb-5 block">
                         <source srcset="/images/logos/car_mic_medium.png" media="(max-width:1068px)">
                         <source srcset="/images/logos/car_mic_large.png" media="(max-width: 0px)">
                         <img src="/images/logos/car_mic_large.png" alt="Car Mic">
                     </picture>
-                    <h3 class="typography-headline-elevated text-[#1d1d1f]">
+                    <h3 id="inTheCarRef" class="typography-headline-elevated text-[#1d1d1f]">
                         Give me directions home
                     </h3>
                 </div>
@@ -41,10 +46,12 @@ import BgGradientSection from "./BgGradientSection.astro";
                 </div>
             </div>
         </div> 
+        <div id="bgRef" class="relative bottom-36"></div>
     </div>
 </BgGradientSection>
 
 <script>
+    import { createBackgroundOpacityObserver } from "@/utils/backgroundOpacityObserve";
     import { setupParallaxEffect } from "@/utils/parallaxEffect";
 
     setupParallaxEffect({
@@ -55,6 +62,45 @@ import BgGradientSection from "./BgGradientSection.astro";
         progressScale: 0.999,
         type: 'opacity'
     });
+
+    const image = document.querySelector('.image-wrapper') as HTMLElement;
+    const refElement = document.querySelector('#inTheCarRef') as HTMLElement;
+
+    const initial = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+    };
+
+    const final = {
+        scale: 0.56378,
+        translateX: 0.5,
+        translateY: 461,
+    };
+
+    const scrollStart = 0;
+    const scrollEnd = window.innerHeight;
+
+    window.addEventListener('scroll', () => {
+        const rect = refElement.getBoundingClientRect();
+        const scrollPos = rect.top + 250;
+
+        let ratio = (scrollEnd - scrollPos) / (scrollEnd - scrollStart) * 3;
+        ratio = Math.max(0, Math.min(1, ratio));
+
+        const scale = initial.scale + (final.scale - initial.scale) * ratio;
+        const translateX = initial.translateX + (final.translateX - initial.translateX) * ratio;
+        const translateY = initial.translateY + (final.translateY - initial.translateY) * ratio;
+
+        image.style.transform = `matrix(${scale}, 0, 0, ${scale}, ${translateX}, ${translateY})`;
+    });
+
+
+    createBackgroundOpacityObserver(
+        '.gradient-bg-in-the-car',  
+        '#bgRef'            
+    );
+
 </script>
 
 <style>
@@ -78,11 +124,17 @@ import BgGradientSection from "./BgGradientSection.astro";
         --height: 46px;
     }
 
+    .image-wrapper {
+        transition: transform 0.2s ease-out;
+    }
+
     .image-wrapper picture img {
         -webkit-mask-image: url('/images/logos/car_carplay_mask_xlarge.png');
         mask-image: url('/images/logos/car_carplay_mask_xlarge.png');
         -webkit-mask-size: cover;
         mask-size: cover;
+        border-radius: 0 0 var(--tile-border-radius) var(--tile-border-radius);
+        max-width: 100%;
     }
 
     .main-tile {
