@@ -1,0 +1,30 @@
+---
+import BgGradientSection from "./BgGradientSection.astro";
+---
+
+<BgGradientSection className="section-in-the-car" bg="gradient-bg-blue">
+    <div class="static w-[var(--section-content)] mr-auto ml-auto">
+        <div class="relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
+            <h2 class="typography-section-headline headline bg-gradient-to-tr from-[#381479] from-20% via-[#3D5791] via-35% to-[#80D6E1] to-75% bg-clip-text text-transparent pb-2.5">
+                In the
+                <br>
+                car.
+            </h2>
+        </div>
+    </div>
+</BgGradientSection>
+
+<style>
+    .section-in-the-car .headline {
+        --tile-y: -150px;
+    }
+
+    .section-in-the-car {
+        --final-img-height: 410px;
+    }
+    @media only screen and (min-width: 1441px) {
+        .section-in-the-car {
+            --final-img-height: 450px;
+        }
+    }
+</style>
