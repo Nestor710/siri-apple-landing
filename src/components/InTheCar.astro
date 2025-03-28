@@ -1,5 +1,6 @@
 ---
 import BgGradientSection from "./BgGradientSection.astro";
+import Card from "./Card.astro";
 ---
 
 <BgGradientSection 
@@ -16,7 +17,7 @@ import BgGradientSection from "./BgGradientSection.astro";
                 car.
             </h2>
         </div>
-        <div class="grid-main static mb-5 pl-0 pr-0 ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
+        <div class="grid-main static mb-6 pl-0 pr-0 ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
             <div class="container-car-copy 2xl:max-h-[160px] max-h-[192px] w-[575px] 2xl:pr-[var(--tile-padding)] pr-0 mt-[-105px] col-start-7 parallax-this fade-it text-[#4e4e52] mb-[70px] row-span-1" style="opacity: 1;"> 
                 <p class="2xl:max-w-[unset] max-w-[440px] mb-0 typography-scenario-intro-copy">
                     Drive safer with Siri. Use the button on your wheel with CarPlay
@@ -47,6 +48,45 @@ import BgGradientSection from "./BgGradientSection.astro";
             </div>
         </div> 
         <div id="bgRef" class="relative bottom-36"></div>
+
+        <div class="static pl-0 pr-0 ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
+            <Card id="card-light-bg">
+                <div class="p-[var(--tile-padding)]">
+                    <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+                        <source srcset="/images/logos/car_quote_light_bg_small.png" media="(max-width:734px)"> 
+                        <source srcset="/images/logos/car_quote_light_bg_medium.png" media="(max-width:1068px)">
+                        <img src="/images/logos/car_quote_light_bg_large.png" alt="Hey Siri">
+                    </picture>
+                    <h3 class="typography-headline">
+                        <span class="bg-gradient-to-br from-[#381479] via-[#3D5791] to-[#80D6E1] [background-angle:22deg] bg-clip-text text-transparent">Siri,</span>
+                        call <br> Vivian Chou
+                    </h3>
+                </div>
+                <picture class="flex self-end justify-center overview-go-title-1">
+                    <source srcset="/images/logos/car_tile_1_small.jpg" media="(max-width:734px)"> 
+                    <source srcset="/images/logos/car_tile_1_medium.jpg" media="(max-width:1068px)">
+                    <img src="/images/logos/car_tile_1_large.jpg" alt="Go">
+                </picture>
+            </Card>
+            <Card id="card-dark-bg" bgDark>
+                <div class="p-[var(--tile-padding)]">
+                    <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+                        <source srcset="/images/logos/car_quote_dark_bg_small.png" media="(max-width:734px)"> 
+                        <source srcset="/images/logos/car_quote_dark_bg_medium.png" media="(max-width:1068px)">
+                        <img src="/images/logos/car_quote_dark_bg_large.png" alt="Hey Siri">
+                    </picture>
+                    <h3 class="typography-headline text-white">
+                        <span class="bg-gradient-to-b from-[#C8FFF7] to-[#84AAFF] [background-position:-10%_80%] bg-clip-text text-transparent">Siri,</span>
+                        share my <br> ETA with Antonio
+                    </h3>
+                </div>
+                <picture class="inline-flex justify-center pb-[var(--tile-padding)] self-start">
+                    <source srcset="/images/logos/car_tile_2_small.png" media="(max-width:734px)"> 
+                    <source srcset="/images/logos/car_tile_2_medium.png" media="(max-width:1068px)">
+                    <img src="/images/logos/car_tile_2_large.png" alt="Go">
+                </picture>
+            </Card>
+        </div>
     </div>
 </BgGradientSection>
 
@@ -61,6 +101,24 @@ import BgGradientSection from "./BgGradientSection.astro";
         easingFactor: 0.1,
         progressScale: 0.999,
         type: 'opacity'
+    });
+
+    setupParallaxEffect({
+        selector: '#card-light-bg',
+        startElevation: 40,
+        endElevation: 0,
+        easingFactor: 0.1,
+        progressScale: 3.5,
+        type: 'translate'
+    });
+
+    setupParallaxEffect({
+        selector: '#card-dark-bg',
+        startElevation: 100,
+        endElevation: 0,
+        easingFactor: 0.1,
+        progressScale: 3.5,
+        type: 'translate'
     });
 
     const image = document.querySelector('.image-wrapper') as HTMLElement;
@@ -154,6 +212,13 @@ import BgGradientSection from "./BgGradientSection.astro";
         height: var(--height);
         --width: 1440px;
         --height: 684px;
+    }
+
+    .overview-car-tile-2 {
+        width: var(--width);
+        height: var(--height);
+        --width: 424px;
+        --height: 84px;
     }
 
     @media only screen and (min-width: 1441px) {

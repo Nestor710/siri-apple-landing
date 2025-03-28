@@ -124,6 +124,14 @@ html {
     font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.typography-headline {
+    font-size: 48px;
+    line-height: 1.0834933333;
+    font-weight: 600;
+    letter-spacing: -0.003em;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
 @media only screen and (min-width: 1441px) {
     :root {
         --section-content-wide: 1344px;
