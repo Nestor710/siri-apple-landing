@@ -1,7 +1,7 @@
 ---
-const { bgDark } = Astro.props;
+const { bgDark, id } = Astro.props;
 ---
 
-<div class={`parallax-this ${bgDark ? 'bg-gradient-to-br from-[#0C0C21] from-25% to-[#1C4262]' : 'bg-white'} grid box-border rounded-[var(--tile-border-radius)] overflow-hidden z-10 min-h-[750px] col-span-6`}>
+<div id={id} class={`parallax-this ${bgDark ? 'bg-gradient-to-br from-[#0C0C21] from-25% to-[#1C4262]' : 'bg-white'} grid box-border rounded-[var(--tile-border-radius)] overflow-hidden z-10 min-h-[750px] col-span-6`}>
     <slot />
 </div>

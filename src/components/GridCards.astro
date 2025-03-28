@@ -3,7 +3,7 @@ import GridCard from "./GridCard.astro";
 ---
 
 <div class="pl-0 pr-0 relative ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
-    <GridCard bgDark>
+    <GridCard id="go-quote-dark-bg" bgDark>
         <div class="p-[var(--tile-padding)]">
             <picture class="text-white mb-5 overview-go-quote-dark-bg block">
                 <source srcset="/images/logos/go_quote_purple_dark_bg_small.png" media="(max-width:734px)"> 
@@ -21,7 +21,7 @@ import GridCard from "./GridCard.astro";
             <img src="/images/logos/go_tile_1_large.png" alt="Go">
         </picture>
     </GridCard>
-    <GridCard>
+    <GridCard id="go-quote-light-bg">
         <div class="p-[var(--tile-padding)]">
             <picture class="text-white mb-5 overview-go-quote-dark-bg block">
                 <source srcset="/images/logos/go_quote_purple_light_bg_small.png" media="(max-width:734px)"> 
@@ -42,6 +42,28 @@ import GridCard from "./GridCard.astro";
         </picture>
     </GridCard>
 </div>
+
+<script>
+    import { setupParallaxEffect } from "@/utils/parallaxEffect";
+
+    setupParallaxEffect({
+        selector: '#go-quote-dark-bg',
+        startElevation: 40,
+        endElevation: 0,
+        easingFactor: 0.1,
+        progressScale: 3.5,
+        type: 'translate'
+    });
+
+    setupParallaxEffect({
+        selector: '#go-quote-light-bg',
+        startElevation: 100,
+        endElevation: 0,
+        easingFactor: 0.1,
+        progressScale: 3.5,
+        type: 'translate'
+    });
+</script>
 
 <style>
     .overview-go-quote-dark-bg {
