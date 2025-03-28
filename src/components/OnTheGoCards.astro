@@ -1,9 +1,9 @@
 ---
-import GridCard from "./GridCard.astro";
+import Card from "./Card.astro";
 ---
 
 <div class="pl-0 pr-0 relative ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6">
-    <GridCard id="go-quote-dark-bg" bgDark>
+    <Card id="go-quote-dark-bg" bgDark>
         <div class="p-[var(--tile-padding)]">
             <picture class="text-white mb-5 overview-go-quote-dark-bg block">
                 <source srcset="/images/logos/go_quote_purple_dark_bg_small.png" media="(max-width:734px)"> 
@@ -20,8 +20,8 @@ import GridCard from "./GridCard.astro";
             <source srcset="/images/logos/go_tile_1_medium.png" media="(max-width:1068px)">
             <img src="/images/logos/go_tile_1_large.png" alt="Go">
         </picture>
-    </GridCard>
-    <GridCard id="go-quote-light-bg">
+    </Card>
+    <Card id="go-quote-light-bg">
         <div class="p-[var(--tile-padding)]">
             <picture class="text-white mb-5 overview-go-quote-dark-bg block">
                 <source srcset="/images/logos/go_quote_purple_light_bg_small.png" media="(max-width:734px)"> 
@@ -40,7 +40,7 @@ import GridCard from "./GridCard.astro";
             <source srcset="/images/logos/go_tile_2_medium.jpg" media="(max-width:1068px)">
             <img src="/images/logos/go_tile_2_large.jpg" alt="Go">
         </picture>
-    </GridCard>
+    </Card>
 </div>
 
 <script>
