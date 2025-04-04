@@ -1,0 +1,260 @@
+---
+import BgGradientSection from "./BgGradientSection.astro";
+import Card from "./Card.astro";
+---
+
+<BgGradientSection
+  bg="gradient-bg-green"
+  className="section-working-out"
+  height="65.23125996810208%"
+  spanBgClass="gradient-bg-working-out"
+>
+  <div class="relative w-[var(--section-content)] mr-auto ml-auto">
+    <div class="relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
+      <h2
+        class="typography-section-headline !text-[245px] headline bg-clip-text text-transparent"
+      >
+        Working out.
+      </h2>
+    </div>
+    <div
+      class="grid-main pl-0 pr-0 relative ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12 px-6 grid"
+    >
+      <div
+        class="container-copy-workout parallax-this fade-it col-start-1 pl-[var(--tile-padding)] will-change text-[#4e4e52] my-[70px] row-span-1 w-[525px]"
+      >
+        <p class="typography-scenario-intro-copy max-w-[429px] mb-0">
+          Stay on track. Start a workout, play a favorite playlist, and hear
+          timely texts out loud — all without breaking your stride.
+        </p>
+      </div>
+      <div
+        class="image-wrapper justify-end col-start-6 col-end-13 row-start-1 row-end-3 z-1 flex"
+      >
+        <picture class="sticky top-[43vh] pr-5 max-w-full block">
+          <source
+            srcset="/images/accessories/workout_watch_small.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/workout_watch_medium.png"
+            media="(max-width:1068px)"
+          />
+          <img
+            src="/images/accessories/workout_watch_large.png"
+            alt="Workout Watch"
+          />
+        </picture>
+      </div>
+      <div
+        class="card-workout w-full row-start-2 col-start-1 row-end-3 col-end-13 rounded-[var(--tile-border-radius)] box-border bg-white py-[var(--tile-padding)] grid relative ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12 min-h-[var(--main-tile-height)]"
+      >
+        <div
+          class="md:flex md:flex-col md:justify-center md:self-center col-start-1 col-end-7 pl-[var(--tile-padding)] will-change-transform"
+        >
+          <picture class="overview-workout-quote-light-bg mb-5 block">
+            <source
+              srcset="/images/logos/workout_quote_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/workout_quote_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/workout_quote_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline-elevated">
+            <span class="siri-copy-gradient bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            start a
+            <br />
+            30-minute outdoor run
+          </h3>
+          <div id="SiriBgRef"></div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pl-0 pr-0 ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6"
+    >
+      <Card id="card-workout-light-bg">
+        <div class="p-[var(--tile-padding)]">
+          <picture class="overview-workout-quote-light-bg mb-5 block">
+            <source
+              srcset="/images/logos/workout_quote_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/workout_quote_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/workout_quote_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline !text-[46px]">
+            <span class="siri-copy-gradient bg-clip-text text-transparent">
+              Siri,
+            </span>
+            play something upbeat
+          </h3>
+        </div>
+        <picture
+          class="overview-workout-tile-1 pb-[var(--tile-padding)] justify-self-center block"
+        >
+          <source
+            srcset="/images/accessories/go_airpods_small.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/go_airpods_medium.png"
+            media="(max-width:1068px)"
+          />
+          <img src="/images/accessories/go_airpods_large.png" alt="Airpods" />
+        </picture>
+      </Card>
+      <Card id="card-workout-dark-bg" className="col-span-6" bgDark>
+        <picture
+          class="overview-workout-tile-2 pt-[var(--tile-padding)] justify-self-center self-center block pb-0 text-center grid-rows-1"
+        >
+          <source
+            srcset="/images/logos/workout_tile_2_small.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/logos/workout_tile_2_medium.png"
+            media="(max-width:1068px)"
+          />
+          <img src="/images/logos/workout_tile_2_large.png" alt="Watch" />
+        </picture>
+        <div class="p-[var(--tile-padding)]">
+          <h3
+            class="tile-1-headline typography-headline bg-clip-text text-transparent mt-8 text-center"
+          >
+            Cami said, ‘Okay, see you soon!’
+          </h3>
+        </div>
+      </Card>
+    </div>
+  </div>
+</BgGradientSection>
+
+<script>
+  import { createBackgroundOpacityObserver } from "@/utils/backgroundOpacityObserve";
+  import { setupParallaxEffect } from "@/utils/parallaxEffect";
+
+  createBackgroundOpacityObserver(".gradient-bg-working-out", "#SiriBgRef");
+
+  setupParallaxEffect({
+    selector: ".container-copy-workout",
+    startElevation: 0,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 1.5,
+    type: "opacity",
+  });
+
+  setupParallaxEffect({
+    selector: "#card-workout-light-bg",
+    startElevation: 60,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+    type: "translate",
+  });
+
+  setupParallaxEffect({
+    selector: "#card-workout-dark-bg",
+    startElevation: 130,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+    type: "translate",
+  });
+</script>
+
+<style>
+  .headline {
+    background-image: linear-gradient(
+      17deg,
+      #0e2c72 40%,
+      #6bdecb 80%,
+      #d4fbb5 96%
+    );
+    line-height: 220px;
+  }
+
+  .grid-main {
+    -webkit-clip-path: inset(-200vh 0 0 0);
+    clip-path: inset(-200vh 0 0 0);
+    margin-bottom: 24px;
+  }
+
+  .will-change {
+    will-change: opacity;
+  }
+
+  .image-wrapper {
+    -webkit-clip-path: inset(-50vh -50% 0px -50%);
+    clip-path: inset(-50vh -50% 0px -50%);
+    pointer-events: none;
+  }
+
+  .image-wrapper picture {
+    --offset: 92px;
+    margin-top: var(--hardware-x-offset);
+    height: calc(var(--height) - var(--offset));
+    width: var(--width);
+    --width: 498px;
+    --height: 589px;
+  }
+
+  .overview-workout-quote-light-bg {
+    width: var(--width);
+    height: var(--height);
+    --width: 47px;
+    --height: 44px;
+  }
+
+  .siri-copy-gradient {
+    background-image: linear-gradient(
+      22deg,
+      #0e2c72 30%,
+      #6bdecb 80%,
+      #d4fbb5 96%
+    );
+  }
+
+  .card-workout {
+    --main-tile-height: 542px;
+    --hardware-x-offset: -225px;
+  }
+
+  .overview-workout-tile-1 {
+    width: var(--width);
+    height: var(--height);
+    --width: 327px;
+    --height: 335px;
+  }
+
+  .tile-1-headline {
+    background-image: linear-gradient(
+      120deg,
+      #fa83df 20%,
+      #7dc0ff 50%,
+      #04f0df
+    );
+  }
+
+  .overview-workout-tile-2 {
+    width: var(--width);
+    height: var(--height);
+    --width: 304px;
+    --height: 304px;
+  }
+</style>
