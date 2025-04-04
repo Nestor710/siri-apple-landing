@@ -169,3 +169,8 @@ html {
         --final-img-height: 450px;
     }
 }
+
+.section-working-out {
+    --main-tile-height: 542px;
+    --hardware-x-offset: -225px;
+}
