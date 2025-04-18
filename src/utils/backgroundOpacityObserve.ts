@@ -3,12 +3,14 @@ export function createBackgroundOpacityObserver(
     referenceSelector: string, 
     options: {
         duration?: number,
-        threshold?: number
+        threshold?: number,
+        offset?: number
     } = {}
 ) {
     const {
         duration = 300,
-        threshold = 0
+        threshold = 0,
+        offset = 0
     } = options;
 
     // Función para animar la opacidad
@@ -50,7 +52,8 @@ export function createBackgroundOpacityObserver(
             }
         });
     }, {
-        threshold
+        threshold,
+        rootMargin: `0px 0px ${offset}px 0px`
     });
 
     // Observar el elemento de referencia
