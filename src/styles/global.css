@@ -173,6 +173,12 @@ html {
     --final-img-height: 300px;
 }
 
+.section-winding-down {
+    z-index: 1;
+    --main-tile-height: 450px;
+    --hardware-x-offset: -65px;
+}
+
 @media only screen and (min-width: 1441px) {
     .section-in-the-car {
         --final-img-height: 450px;

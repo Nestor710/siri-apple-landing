@@ -1,0 +1,389 @@
+---
+import BgGradientSection from "@/components/BgGradientSection.astro";
+import Card from "@/components/Card.astro";
+---
+
+<BgGradientSection
+  bg="gradient-bg-pink"
+  className="section-winding-down"
+  height="79%"
+  spanBgClass="gradient-bg-winding-down"
+>
+  <div class="relative w-[var(--section-content)] mr-auto ml-auto">
+    <div class="relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
+      <h2
+        class="typography-section-headline !text-[256px] headline bg-clip-text text-transparent"
+      >
+        Winding down.
+      </h2>
+    </div>
+    <div
+      class="grid-main pl-0 pr-0 relative ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12 px-6 grid"
+    >
+      <div
+        class="container-copy-winding-down parallax-this fade-it col-start-1 pl-[var(--tile-padding)] will-change text-[#4e4e52] my-[70px] row-span-1 w-[525px]"
+      >
+        <p class="typography-scenario-intro-copy max-w-[395px] mb-0">
+          Kick back and relax. Set your alarm, turn off the lights, and drift
+          off with calming music — all with your eyes closed.
+        </p>
+      </div>
+      <div
+        class="image-wrapper justify-end col-start-6 col-end-13 row-start-1 row-end-3 z-1 flex pointer-events-none"
+      >
+        <picture
+          class="overview-winding-down-homepod sticky top-[40vh] pr-5 max-w-full"
+        >
+          <source
+            srcset="/images/accessories/winding_down_homepod_small.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_homepod_medium.png"
+            media="(max-width:1068px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_homepod_large.png"
+            media="(min-width:0px)"
+          />
+          <img
+            src="/images/accessories/winding_down_homepod_large.png"
+            alt="HomePod"
+          />
+        </picture>
+      </div>
+      <div
+        class="winding-down-tile w-full col-start-1 col-end-13 row-start-2 row-end-3 rounded-[var(--tile-border-radius)] box-border bg-white pt-[var(--tile-padding)] pb-[var(--tile-padding)] grid relative min-h-[var(--main-tile-height)] ml-auto mr-auto gap-x-6 gap-y-6 grid-cols-12 h-full"
+      >
+        <div
+          id="play-ocean-sounds"
+          class="parallax-this md:flex md:flex-col md:justify-center md:self-center col-start-1 col-end-7 pl-[var(--tile-padding)] will-change-transform"
+        >
+          <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_light_bg_large.png"
+              alt="Hey Siri"
+            />
+            <h3
+              class="typography-headline-elevated !text-[59px] text-black z-1"
+            >
+              <span
+                id="bg-winding-down-ref"
+                class="bg-gradient-to-tr from-[#224D88] from-32% via-[#935893] via-60% to-[#E896B8] to-80% bg-clip-text text-transparent"
+                >Siri,</span
+              >
+              play <br /> ocean sounds
+            </h3>
+          </picture>
+        </div>
+      </div>
+    </div>
+    <div
+      id="winding-down-weather"
+      class="pl-0 pr-0 relative ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6"
+    >
+      <div
+        class="flex-col flex min-h-[400px] items-center justify-between box-border rounded-[var(--tile-border-radius)] bg-white z-1 overflow-hidden will-change-transform col-span-12"
+      >
+        <div class="self-start pb-[60px] p-[var(--tile-padding)]">
+          <picture class="mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline text-black max-w-[590px]">
+            <span
+              class="bg-gradient-to-tr from-[#224D88] from-32% via-[#935893] via-60% to-[#E896B8] to-80% bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            what will the weather be like tomorrow?
+          </h3>
+        </div>
+        <picture class="overview-winding-down-weather pb-8 self-center block">
+          <source
+            srcset="/images/accessories/winding_down_weather_large.jpg"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_weather_medium.jpg"
+            media="(max-width:1068px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_weather_large.jpg"
+            media="(min-width:0px)"
+          />
+          <img
+            src="/images/accessories/winding_down_weather_large.jpg"
+            alt="Weather"
+          />
+        </picture>
+      </div>
+      <Card id="winding-down-light-bg">
+        <div class="p-[var(--tile-padding)]">
+          <picture class="mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline !text-[46px]">
+            <span
+              class="bg-gradient-to-tr from-[#224D88] from-32% via-[#935893] via-60% to-[#E896B8] to-80% bg-clip-text text-transparent"
+            >
+              Siri,
+            </span>
+            set an <br /> alarm for 8 AM
+          </h3>
+        </div>
+        <picture class="flex self-end justify-center overview-go-title-1">
+          <source
+            srcset="/images/accessories/winding_down_tile_1_large.jpg"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_tile_1_medium.jpg"
+            media="(max-width:1068px)"
+          />
+          <img
+            src="/images/accessories/winding_down_tile_1_large.jpg"
+            alt="Tile 1"
+          />
+        </picture>
+      </Card>
+      <Card id="winding-down-dark-bg" className="col-span-6" bgDark>
+        <div class="p-[var(--tile-padding)]">
+          <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_dark_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_dark_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_dark_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline text-white">
+            <span
+              class="bg-gradient-to-tr from-[#C774C7] to-[#FFA6CB] to-80% bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            dim <br /> the lights
+          </h3>
+        </div>
+        <picture
+          class="inline-flex justify-center items-start pb-[var(--tile-padding)] self-start overview-go-title-1"
+        >
+          <source
+            srcset="/images/accessories/winding_down_tile_2_large.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_tile_2_medium.png"
+            media="(max-width:1068px)"
+          />
+          <img
+            src="/images/accessories/winding_down_tile_2_large.png"
+            alt="Go"
+          />
+        </picture>
+      </Card>
+      <div
+        id="winding-down-mindfulness"
+        class="winding-down-tile-4 h-[750px] items-start relative bg-none flex min-h-[400px] justify-between box-border rounded-[var(--tile-border-radius)] overflow-hidden z-1 will-change-transform col-span-12"
+      >
+        <div class="relative z-2 p-[var(--tile-padding)]">
+          <picture class="mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline text-black max-w-[17.6470588235rem]">
+            <span
+              class="bg-gradient-to-tr from-[#224D88] from-32% via-[#935893] via-60% to-[#E896B8] to-80% bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            start Mindfulness
+          </h3>
+        </div>
+        <picture
+          class="overview-winding-down-mindfulness absolute p-o top-0 left-0 z-1 self-center block"
+        >
+          <source
+            srcset="/images/accessories/winding_down_mindfulness_large.jpg"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_mindfulness_medium.jpg"
+            media="(max-width:1068px)"
+          />
+          <source
+            srcset="/images/accessories/winding_down_mindfulness_large.jpg"
+            media="(min-width:0px)"
+          />
+          <img
+            src="/images/accessories/winding_down_mindfulness_large.jpg"
+            alt="Mindfulness"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</BgGradientSection>
+
+<script>
+  import { createBackgroundOpacityObserver } from "@/utils/backgroundOpacityObserve";
+  import { setupParallaxEffect } from "@/utils/parallaxEffect";
+
+  createBackgroundOpacityObserver(
+    ".gradient-bg-winding-down",
+    "#bg-winding-down-ref",
+    {
+      offset: -60,
+    }
+  );
+
+  setupParallaxEffect({
+    selector: ".container-copy-winding-down",
+    easingFactor: 0.1,
+    progressScale: 1.09,
+    offset: 200,
+    type: "opacity",
+  });
+
+  setupParallaxEffect({
+    selector: "#play-ocean-sounds",
+    startElevation: 90,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 5,
+  });
+
+  setupParallaxEffect({
+    selector: "#winding-down-weather",
+    startElevation: 50,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+  });
+
+  setupParallaxEffect({
+    selector: "#winding-down-light-bg",
+    startElevation: 40,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+  });
+
+  setupParallaxEffect({
+    selector: "#winding-down-dark-bg",
+    startElevation: 100,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+  });
+
+  setupParallaxEffect({
+    selector: "#winding-down-mindfulness",
+    startElevation: 100,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+  });
+</script>
+
+<style>
+  .headline {
+    background-image: linear-gradient(
+      20deg,
+      #0c0c21 6%,
+      #3e3d91 50%,
+      #e180c0 88%
+    );
+    line-height: 220px;
+  }
+
+  .image-wrapper {
+    -webkit-clip-path: inset(-50vh -50% 0px -50%);
+    clip-path: inset(-50vh -50% 0px -50%);
+  }
+
+  .winding-down-tile {
+    -webkit-clip-path: inset(-110vh 0 0 0);
+    clip-path: inset(-110vh 0 0 0);
+  }
+
+  .image-wrapper picture {
+    margin-top: var(--hardware-x-offset);
+    height: calc(var(--main-tile-height) - var(--tile-padding) / 2);
+  }
+
+  .overview-winding-down-homepod {
+    width: var(--width);
+    height: var(--height);
+    --width: 575px;
+    --height: 573px;
+    display: block;
+  }
+
+  .grid-main {
+    -webkit-clip-path: inset(-200vh 0 0 0);
+    clip-path: inset(-200vh 0 0 0);
+    margin-bottom: 24px;
+  }
+
+  .overview-winding-down-weather {
+    width: var(--width);
+    height: var(--height);
+    --width: 639px;
+    --height: 641px;
+  }
+
+  .winding-down-tile-4 {
+    --tile-bg: #ececec;
+  }
+
+  .overview-winding-down-mindfulness {
+    width: var(--width);
+    height: var(--height);
+    --width: 1075px;
+    --height: 750px;
+  }
+</style>
