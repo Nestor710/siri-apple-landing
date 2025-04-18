@@ -6,6 +6,7 @@ export function setupParallaxEffect({
     endElevation = 0,
     easingFactor = 0.1,
     progressScale = 3.5,
+    offset = 0,
     type = 'translate' // 'translate' por defecto; usa 'opacity' para el efecto de opacidad
 }: {
     selector: string;
@@ -13,6 +14,7 @@ export function setupParallaxEffect({
     endElevation?: number;
     easingFactor?: number;
     progressScale?: number;
+    offset?: number;
     type?: 'translate' | 'opacity';
 }) {
     // Early return if used in SSR or if selector is invalid
@@ -68,7 +70,8 @@ export function setupParallaxEffect({
             }
         });
     }, {
-        threshold: 0
+        threshold: 0,
+        rootMargin: `0px 0px ${offset}px 0px`
     });
 
     function setupParallaxEffects() {
