@@ -160,8 +160,17 @@ html {
     }
 }
 
+.section-on-the-go {
+    --main-tile-height: 504px;
+}
+
 .section-in-the-car {
     --final-img-height: 410px;
+}
+
+.section-in-the-kitchen {
+    --main-tile-height: 650px;
+    --final-img-height: 300px;
 }
 
 @media only screen and (min-width: 1441px) {
