@@ -1,0 +1,297 @@
+---
+import BgGradientSection from "./BgGradientSection.astro";
+import Card from "./Card.astro";
+---
+
+<BgGradientSection
+  bg="gradient-bg-orange"
+  className="section-in-the-kitchen"
+  height="66.30669546436285%"
+  spanBgClass="gradient-bg-in-the-kitchen"
+>
+  <div class="relative w-[var(--section-content)] mr-auto ml-auto">
+    <div class="relative pl-[var(--tile-padding)] pr-[var(--tile-padding)]">
+      <h2
+        class="typography-section-headline headline !leading-[220px] bg-gradient-to-tr from-[#072E67] from-25% via-[#6B3C95] via-50% to-[#FE8F7E] to-80% bg-clip-text text-transparent pb-2.5"
+      >
+        In the
+        <br />
+        Kitchen.
+      </h2>
+    </div>
+    <div
+      class="grid-main mx-auto gap-6 px-6 grid grid-cols-12 pl-0 pr-0 mb-6 relative"
+    >
+      <div
+        class="container-copy-kitchen row-start-1 col-start-1 pl-[var(--tile-padding)] text-[#4e4e52] mt-[70px] mb-[70px] will-change-[opacity] w-[517px]"
+      >
+        <p class="typography-scenario-intro-copy mb-0">
+          Multitask without the mess. <br /> Set timers, convert measurements, and
+          call everyone to the table with Intercom on HomePod. Without getting pizza
+          sauce all over <br /> your iPad.
+        </p>
+      </div>
+      <div
+        class="pl-[var(--tile-padding)] row-start-1 col-start-1 row-end-3 col-end-13 z-1 flex pointer-events-none clip-[inset(-50vh_-50%_0px_-50%)]"
+        style="-webkit-clip-path: inset(-50vh -50% 0px -50%);clip-path: inset(-50vh -50% 0px -50%);"
+        aria-hidden="true"
+      >
+        <picture class="ipad-sticky overview-ipad mt-[175px] ml-[-2px] sticky">
+          <source
+            srcset="/images/accessories/kitchen_ipad_small.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/kitchen_ipad_medium.png"
+            media="(max-width:1068px)"
+          />
+          <img
+            class="max-w-full"
+            src="/images/accessories/kitchen_ipad_large.png"
+            alt="iPad Sticky"
+          />
+        </picture>
+      </div>
+      <div
+        id="card-in-the-kitchen"
+        class="mx-auto grid gap-6 px-6 w-full grid-cols-12 rounded-[var(--tile-border-radius)] box-border min-h-[var(--main-tile-height)] bg-[#fbfbfd] py-[var(--tile-padding)] relative h-full"
+        style="grid-area: 2 / 1 / 3 / 13;"
+      >
+        <div
+          class="parallax-this self-start pb-[var(--final-img-height)] flex flex-col justify-center pl-[var(--tile-padding)] col-start-1 col-end-7 will-change-transform"
+        >
+          <picture class="mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline-elevated !text-[59px] z-1">
+            <span
+              id="bg-in-the-kitchen-reference"
+              class="bg-gradient-to-tr from-[rgb(34,77,136)] from-32% via-[rgb(147,88,147)] via-60% to-[rgb(232,150,184)] to-80% bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            set a <br /> pizza timer for 12 minutes
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pl-0 pr-0 relative ml-auto mr-auto grid grid-cols-12 gap-x-6 gap-y-6 px-6"
+    >
+      <Card id="in-the-kitchen-dark-bg" bgDark>
+        <div class="p-[var(--tile-padding)]">
+          <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_dark_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_dark_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_dark_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline text-white">
+            <span
+              class="bg-gradient-to-tr from-[#C774C7] to-[#FFA6CB] to-80% bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            how many tablespoons are in one-quarter cup?
+          </h3>
+        </div>
+        <picture
+          class="inline-flex justify-center items-start pb-[var(--tile-padding)] self-start overview-go-title-1"
+        >
+          <source
+            srcset="/images/accessories/kitchen_tile_1_small.png"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/kitchen_tile_1_medium.png"
+            media="(max-width:1068px)"
+          />
+          <img src="/images/accessories/kitchen_tile_1_large.png" alt="Go" />
+        </picture>
+      </Card>
+      <Card id="in-the-kitchen-light-bg">
+        <div class="p-[var(--tile-padding)]">
+          <picture class="text-white mb-5 overview-go-quote-dark-bg block">
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_small.png"
+              media="(max-width:734px)"
+            />
+            <source
+              srcset="/images/logos/go_quote_purple_light_bg_medium.png"
+              media="(max-width:1068px)"
+            />
+            <img
+              src="/images/logos/go_quote_purple_light_bg_large.png"
+              alt="Hey Siri"
+            />
+          </picture>
+          <h3 class="typography-headline">
+            <span
+              class="bg-gradient-to-tr from-[#224D88] from-32% via-[#935893] via-60% to-[#E896B8] to-80% bg-clip-text text-transparent"
+              >Siri,</span
+            >
+            intercom <br /> to Daniel’s room, ‘Dinner’s ready’
+          </h3>
+        </div>
+        <picture
+          class="flex self-end items-end pb-0 justify-end justify-self-center overview-go-tile-2"
+        >
+          <source
+            srcset="/images/accessories/kitchen_tile_2_small.jpg"
+            media="(max-width:734px)"
+          />
+          <source
+            srcset="/images/accessories/kitchen_tile_2_medium.jpg"
+            media="(max-width:1068px)"
+          />
+          <img src="/images/accessories/kitchen_tile_2_large.jpg" alt="Go" />
+        </picture>
+      </Card>
+    </div>
+  </div>
+</BgGradientSection>
+
+<script>
+  import { createBackgroundOpacityObserver } from "@/utils/backgroundOpacityObserve";
+  import { setupParallaxEffect } from "@/utils/parallaxEffect";
+
+  setupParallaxEffect({
+    selector: ".container-copy-kitchen",
+    easingFactor: 0.1,
+    progressScale: 1.09,
+    offset: 200,
+    type: "opacity",
+  });
+
+  setupParallaxEffect({
+    selector: "#card-in-the-kitchen",
+    startElevation: 50,
+    easingFactor: 0.1,
+    progressScale: 1.09,
+    type: "translate",
+  });
+
+  setupParallaxEffect({
+    selector: "#in-the-kitchen-dark-bg",
+    startElevation: 40,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+    type: "translate",
+  });
+
+  setupParallaxEffect({
+    selector: "#in-the-kitchen-light-bg",
+    startElevation: 100,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 3.5,
+    type: "translate",
+  });
+
+  createBackgroundOpacityObserver(
+    ".gradient-bg-in-the-kitchen",
+    "#bg-in-the-kitchen-reference",
+    {
+      offset: -400,
+    }
+  );
+</script>
+
+<style>
+  .image-wrapper-sticky {
+    z-index: 1;
+    display: flex;
+    -webkit-clip-path: inset(-50vh -50% 0px -50%);
+    clip-path: inset(-50vh -50% 0px -50%);
+    pointer-events: none;
+    grid-area: 1 / 1 / 3 / 13;
+    padding-left: var(--tile-padding);
+  }
+
+  .image-wrapper-sticky picture {
+    --p-offset: 133px;
+    top: calc(100% - var(--p-height) * 0.85);
+    max-width: calc(100% - var(--tile-padding));
+    margin-top: 175px;
+    margin-left: -2px;
+    height: calc(var(--p-height) - var(--p-offset));
+    --p-width: 986px;
+    --p-height: 544px;
+    position: sticky;
+    display: block;
+    pointer-events: none;
+    width: var(--p-width);
+  }
+  .overview-go-quote-dark-bg {
+    width: var(--p-width);
+    height: var(--p-height);
+    --p-width: 47px;
+    --p-height: 44px;
+  }
+
+  .headline {
+    --tile-y: -150px;
+  }
+
+  .grid-main {
+    -webkit-clip-path: unset;
+    clip-path: unset;
+  }
+
+  .copy-container {
+    --y-offset: -105px;
+  }
+
+  .ipad-sticky {
+    --offset: 133px;
+    top: calc(100% - var(--height) * 0.85);
+    max-width: calc(100% - var(--tile-padding));
+    height: calc(var(--height) - var(--offset));
+    --width: 986px;
+    --height: 544px;
+  }
+
+  .overview-ipad {
+    display: block;
+    width: var(--width);
+  }
+
+  .overview-in-the-kitchen-quote-light-bg {
+    width: var(--width);
+    height: var(--height);
+    --width: 47px;
+    --height: 44px;
+  }
+
+  .overview-in-the-kitchen-tile-1 {
+    width: var(--width);
+    height: var(--height);
+    --width: 327px;
+    --height: 335px;
+  }
+
+  .overview-in-the-kitchen-tile-2 {
+    width: var(--width);
+    height: var(--height);
+    --width: 304px;
+    --height: 304px;
+  }
+</style>
