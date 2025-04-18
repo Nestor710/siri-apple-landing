@@ -1,49 +1,89 @@
 ---
 interface Props {
-    bg: 'gradient-bg-purple' | 'gradient-bg-blue' | 'gradient-bg-green' | 'gradient-bg-orange' | 'gradient-bg-pink';
-    height?: string;
-    className?: string;
-    spanBgClass: string;
+  bg:
+    | "gradient-bg-purple"
+    | "gradient-bg-blue"
+    | "gradient-bg-green"
+    | "gradient-bg-orange"
+    | "gradient-bg-pink";
+  height?: string;
+  className?: string;
+  spanBgClass: string;
 }
 
-const { bg, height = '58.42778793418647%', className, spanBgClass } = Astro.props;
+const {
+  bg,
+  height = "58.42778793418647%",
+  className,
+  spanBgClass,
+} = Astro.props;
 ---
 
-<section class={`${className} section py-[var(--section-padding)] relative rounded-[60px] will-change`}>
-    <span class={`${bg} ${spanBgClass} absolute left-0 top-0 w-full h-full bg-bottom bg-no-repeat bg-[length:100%_var(--bg-height)] opacity-0 z-0 transition-opacity duration-750 ease-in-out overflow-hidden rounded-[60px]`} style={`--bg-height: ${height}; opacity: 0;`}></span>
-    <slot />
+<section
+  class={`${className} section py-[var(--section-padding)] relative rounded-[60px] will-change`}
+>
+  <span
+    class={`${bg} ${spanBgClass} absolute left-0 top-0 w-full h-full bg-bottom bg-no-repeat bg-[length:100%_var(--bg-height)] opacity-0 z-0 transition-opacity duration-750 ease-in-out overflow-hidden rounded-[60px]`}
+    style={`--bg-height: ${height}; opacity: 0;`}></span>
+  <slot />
 </section>
 
 <style>
-    section {
-        --main-tile-height: 504px;
-    }
+  .section-scenario.will-change .gradient-bg {
+    will-change: opacity;
+  }
 
-    .section-scenario.will-change .gradient-bg {
-        will-change: opacity;
-    }
+  .gradient-bg-purple {
+    background-image: linear-gradient(
+      180deg,
+      #fbfbfd,
+      #e795b7 20%,
+      #935893 45%,
+      #224d88
+    );
+  }
 
-    .gradient-bg-purple {
-        background-image: linear-gradient(180deg, #fbfbfd, #E795B7 20%, #935893 45%, #224D88);
-    }
+  .gradient-bg-blue {
+    background-image: linear-gradient(
+      180deg,
+      #fbfbfd,
+      #b2e1ea 20%,
+      #415f96 45%,
+      #39207d
+    );
+  }
 
-    .gradient-bg-blue {
-        background-image: linear-gradient(180deg, #fbfbfd, #B2E1EA 20%, #415F96 45%, #39207D);
-    }
+  .gradient-bg-green {
+    background-image: linear-gradient(
+      180deg,
+      #fbfbfd,
+      #68d8c8 20%,
+      #327295 45%,
+      #0e2c72
+    );
+  }
 
-    .gradient-bg-green {
-        background-image: linear-gradient(180deg, #fbfbfd, #68D8C8 20%, #327295 45%, #0E2C72);
-    }
+  .gradient-bg-orange {
+    background-image: linear-gradient(
+      180deg,
+      #fbfbfd,
+      #ec8580 20%,
+      #613b91 45%,
+      #142f6d
+    );
+  }
 
-    .gradient-bg-orange {
-        background-image: linear-gradient(180deg, #fbfbfd, #EC8580 20%, #613B91 45%, #142F6D);
-    }
+  .gradient-bg-pink {
+    background-image: linear-gradient(
+      180deg,
+      #fbfbfd,
+      #e181c0 20%,
+      #4b4294 45%,
+      #0b1432
+    );
+  }
 
-    .gradient-bg-pink {
-        background-image: linear-gradient(180deg, #fbfbfd, #E181C0 20%, #4B4294 45%, #0B1432);
-    }
-
-    .will-change .parallax-this.fade-it {
-        will-change: opacity;
-    }
+  .will-change .parallax-this.fade-it {
+    will-change: opacity;
+  }
 </style>
