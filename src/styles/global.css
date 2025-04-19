@@ -12,6 +12,8 @@
     --tile-border-radius: 40px;
     --tile-padding: 45px;
     --tile-max-width: 300px;
+    --digital-assistant-inset: 50px;
+    --digital-assistant-radius: 100px;
 }
 
 body {

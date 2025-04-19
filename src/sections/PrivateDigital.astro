@@ -1,0 +1,180 @@
+<span class="block z-0 relative w-full h-[100px] mt-[-100px]"></span>
+<section class="bg-[#152046]">
+  <div
+    id="clip-path-container"
+    class="w-full max-w-[unset] ml-auto mr-auto"
+    style="clip-path: inset(200px 50px round 100px)"
+  >
+    <div
+      class="callout bg-black text-[rgb(110, 110, 115)] flex flex-col justify-center items-center mt-[-60px] text-center border-transparent"
+    >
+      <figure class="callout-icon"></figure>
+      <h2
+        class="text-white max-w-[14ch] typography-digital-assistant-headline mt-[30px] mr-auto ml-auto mb-[35px]"
+      >
+        The most private digital assistant.
+      </h2>
+      <p
+        class="typography-digital-assistant-copy max-w-[900px] mb-[30px] m-0 text-white/40"
+      >
+        Siri learns what you need. Not who you are. What you ask Siri isn’t
+        associated with your Apple Account. The power of the Apple Neural Engine
+        ensures that the audio of your requests never leaves your iPhone, iPad,
+        Apple Watch, or Apple Vision Pro unless you choose to share it.
+        On-device intelligence makes your experience with Siri personal —
+        learning your preferences and what you might want — while maintaining
+        your privacy. And, of course, what you share with Siri is never shared
+        with advertisers.
+      </p>
+      <a
+        aria-label="Learn more about Privacy at Apple"
+        title="Learn more about Privacy at Apple"
+        href="https://www.apple.com/privacy/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="no-underline inline-block mt-[1.5em]"
+      >
+        <span class="text-blue-500 inline-flex text-xl">
+          Learn more about Privacy at Apple
+          <img
+            src="/images/logos/chevron-arrow.png"
+            alt="Learn more about Privacy at Apple Arrow"
+          />
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const targetDiv = document.getElementById(
+      "clip-path-container"
+    ) as HTMLElement;
+
+    if (!targetDiv) {
+      console.error("Elemento con ID 'clip-path-container' no encontrado");
+      return;
+    }
+
+    // Valores iniciales y finales para el clip-path
+    const initialClip = { top: 0, sides: 0, radius: 0 };
+    const finalClip = { top: 200, sides: 50, radius: 100 };
+
+    // Configuración inicial
+    targetDiv.style.clipPath = `inset(0)`;
+
+    // Función de aceleración cúbica
+    function easeInOut(t: number): number {
+      // Esta función cúbica acelera el efecto
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    // Función para actualizar el clip-path
+    function updateClipPath() {
+      const rect = targetDiv.getBoundingClientRect();
+
+      // Calcular el porcentaje de visibilidad
+      // -1 cuando está completamente debajo de la pantalla
+      // 0 cuando está centrado en la pantalla
+      // 1 cuando está completamente encima de la pantalla
+      const elementPosition = rect.top / window.innerHeight;
+
+      // Normalizar a un rango de 0-1 para el clip-path
+      // Usando una ventana más pequeña para que el cambio sea más rápido
+      const windowSize = 0.6; // Más pequeño = cambio más rápido
+      let progress = (0.5 - elementPosition) / windowSize + 0.5;
+      progress = Math.min(Math.max(progress, 0), 1);
+
+      // Aplicar función de aceleración
+      const easedProgress = easeInOut(progress);
+
+      // Interpolar valores
+      const top =
+        initialClip.top + (finalClip.top - initialClip.top) * easedProgress;
+      const sides =
+        initialClip.sides +
+        (finalClip.sides - initialClip.sides) * easedProgress;
+      const radius =
+        initialClip.radius +
+        (finalClip.radius - initialClip.radius) * easedProgress;
+
+      // Actualizar clip-path
+      targetDiv.style.clipPath = `inset(${top}px ${sides}px round ${radius}px)`;
+    }
+
+    // Observer para activar/desactivar la animación
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting) {
+          window.addEventListener("scroll", updateClipPath);
+          updateClipPath();
+        } else {
+          window.removeEventListener("scroll", updateClipPath);
+        }
+      },
+      {
+        rootMargin: "150px 0px",
+        threshold: 0,
+      }
+    );
+
+    // Comenzar a observar el elemento
+    observer.observe(targetDiv);
+  });
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .callout {
+    padding: calc(var(--digital-assistant-inset) * 6)
+      calc(var(--digital-assistant-inset) * 2);
+    font-size: 17px;
+    line-height: 1.4705882353;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    border: 1px solid transparent;
+  }
+
+  .callout-icon {
+    margin-top: -9px;
+    background-repeat: no-repeat;
+    background-image: url(/images/logos/lock_large.png);
+    background-size: 960px 504px;
+    width: 64px;
+    height: 84px;
+    background-position: -640px -420px;
+  }
+
+  .typography-digital-assistant-headline {
+    font-size: 80px;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    font-family:
+      SF Pro Display,
+      SF Pro Icons,
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+
+  .typography-digital-assistant-copy {
+    font-size: 28px;
+    line-height: 1.1428571429;
+    font-weight: 500;
+    letter-spacing: 0.007em;
+    font-family:
+      SF Pro Display,
+      SF Pro Icons,
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+</style>
