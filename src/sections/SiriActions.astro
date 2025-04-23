@@ -1,0 +1,129 @@
+---
+import SiriActionsContent from "@/components/SiriActionsContent";
+import { SIRI_DOES_ALL } from "@/consts/SiriDoesAll";
+
+const buttons = SIRI_DOES_ALL.map(({ texts, ...rest }) => rest);
+---
+
+<section class="opacity-[1] text-white bg-[#152046] text-center">
+  <div class="w-[var(--section-content)] mr-auto ml-auto">
+    <div class="flex items-center justify-center">
+      <h2
+        class="text-white mb-5 text-[80px] !leading-[1.05] font-semibold tracking-[-0.015em]"
+      >
+        Siri does all this. And more.
+      </h2>
+    </div>
+  </div>
+  <section
+    class="h-auto flex overflow-hidden w-full pb-4 relative text-lg text-center z-1"
+  >
+    <ul
+      class="list-none grid grid-cols-[repeat(9,_minmax(100px,113px))] max-w-[1000px] ml-auto mr-auto overflow-x-auto overflow-y-hidden whitespace-nowrap pt-1 pb-1 w-[var(--section-content)]"
+    >
+      {
+        buttons.map(({ image, category, color, dataId }) => (
+          <li class="pl-0 my-0 mx-3 inline-block list-none outline-none">
+            <button
+              data-id={dataId}
+              class="category-button cursor-pointer opacity-[1] text-center transition-opacity duration-300 ease-in whitespace-normal pt-[1px] text-sm leading-[1.2857742857] font-normal tracking-[0.016em]"
+            >
+              <div
+                style={`
+                  --btn-bg: ${category === "All" ? color : "transparent"};
+                  --btn-border: ${category !== "All" ? color : "transparent"};
+                  --icon-fill: ${category === "All" ? "url(#allGradient)" : color};
+                `}
+                class="tag rounded-[50em] border-[2px] border-gray-500 w-20 h-20 relative mr-auto ml-auto box-border mb-3 flex items-center justify-center"
+              >
+                <image.icon
+                  width={image.width}
+                  height={image.height}
+                  class="icon-svg fill-gray-500"
+                  alt={category}
+                />
+              </div>
+              <span class="category-text text-gray-500 transition-colors duration-400 ease-in-out">
+                {category}
+              </span>
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <SiriActionsContent client:only="preact" />
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.getElementsByClassName("category-button");
+
+    // Función para actualizar las clases activas
+    function setActiveButton(selectedButton: Element) {
+      // Desactivar todos los botones
+      Array.from(buttons).forEach((button) => {
+        button.querySelector(".tag")?.classList.remove("active");
+        button.querySelector(".category-text")?.classList.remove("text-white");
+      });
+
+      // Activar solo el botón seleccionado
+      selectedButton.querySelector(".tag")?.classList.add("active");
+      selectedButton
+        .querySelector(".category-text")
+        ?.classList.add("text-white");
+    }
+
+    // Configurar el botón "all" como activo inicialmente
+    const allButton = Array.from(buttons).find(
+      (button) => button.getAttribute("data-id") === "all"
+    );
+    if (allButton) {
+      setActiveButton(allButton);
+    }
+
+    // Agregar event listeners a todos los botones
+    Array.from(buttons).forEach((button) => {
+      button.addEventListener("click", () => {
+        setActiveButton(button);
+
+        // Disparar evento custom con el dataId seleccionado
+        const dataId = button.getAttribute("data-id");
+        document.dispatchEvent(
+          new CustomEvent("categorySelected", {
+            detail: { selected: dataId },
+          })
+        );
+      });
+    });
+  });
+</script>
+
+<style>
+  .tag:focus,
+  .tag:focus-visible,
+  .tag.active,
+  .tag:hover {
+    background: var(--btn-bg);
+    border-color: var(--btn-border);
+
+    & .icon-svg {
+      fill: var(--icon-fill);
+    }
+  }
+
+  button:hover {
+    & .category-text {
+      color: white;
+    }
+
+    & .tag {
+      background: var(--btn-bg);
+      border-color: var(--btn-border);
+    }
+
+    & .icon-svg {
+      fill: var(--icon-fill);
+    }
+  }
+</style>
