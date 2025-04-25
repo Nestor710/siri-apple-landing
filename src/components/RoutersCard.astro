@@ -1,0 +1,76 @@
+---
+import ArrowRightIcon from "@/assets/svg/icon-right-arrow.svg";
+interface Props {
+  id: string;
+  title: string;
+  image: {
+    title: string;
+    tile: string;
+    className?: string;
+    width?: string;
+    height?: string;
+  };
+  bgColor: string;
+  link: {
+    href: string;
+    text: string;
+  };
+}
+
+const { id, title, image, link, bgColor } = Astro.props;
+---
+
+<div
+  id={id}
+  style={{ background: bgColor }}
+  class="flex flex-col items-center rounded-[var(--tile-border-radius)] box-border pt-[95px] pb-0 px-[25px] will-change-transform text-white col-span-4"
+>
+  <div>
+    <p
+      class="text-[48px] !leading-[1.0834933333] font-semibold tracking-[-0.003em]"
+    >
+      {title}
+    </p>
+    <p
+      class="mt-[17px] text-[21px] !leading-[1.381002381] font-normal tracking-[.011em]"
+    >
+      <a
+        href={link.href}
+        class="text-white hover:underline flex items-center justify-center gap-2"
+      >
+        <span>
+          {link.text}
+        </span>
+        <span>
+          <ArrowRightIcon class="!fill-white mt-1 text-white" />
+        </span>
+      </a>
+    </p>
+  </div>
+  <picture
+    style={{
+      width: "var(--width)",
+      height: "var(--height)",
+      "--width": image.width || "177px",
+      "--height": image.height || "177px",
+    }}
+    class={`flex grow items-center furhter-images ${image.className}`}
+  >
+    <source
+      srcset={`/images/accessories/routers_tile_${image.tile}_small.png`}
+      media="(max-width:734px)"
+    />
+    <source
+      srcset={`/images/accessories/routers_tile_${image.tile}_medium.png`}
+      media="(max-width:1068px)"
+    />
+    <source
+      srcset={`/images/accessories/routers_tile_${image.tile}_large.png`}
+      media="(min-width:0px)"
+    />
+    <img
+      src={`/images/accessories/routers_tile_${image.tile}_large.png`}
+      alt={image.title}
+    />
+  </picture>
+</div>

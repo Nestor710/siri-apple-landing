@@ -1,0 +1,89 @@
+---
+import RoutersCard from "@/components/RoutersCard.astro";
+---
+
+<section class="mt-[170px] pb-[100px]">
+  <div
+    class="grid grid-col justify-center items-center w-[var(--section-content-wide)] ml-auto mr-auto text-center"
+  >
+    <h2 class="text-[80px] !leading-[1.05] font-semibold tracking-[-0.015em]">
+      Go even further with Siri.
+    </h2>
+    <div
+      class="ml-auto mr-auto grid gap-x-6 gap-y-6 px-6 grid-cols-12 mt-[55px] w-full pl-0 pr-0"
+    >
+      <RoutersCard
+        id="use-siri-on-your-apple-devices"
+        title="Use Siri on your Apple devices"
+        image={{
+          title: "Use Siri on your Apple devices Image",
+          tile: "1",
+        }}
+        bgColor="linear-gradient(166deg, #1c4262 -10%, #0c0c21 70%)"
+        link={{
+          href: "https://support.apple.com/en-us/105020",
+          text: "Learn how",
+        }}
+      />
+      <RoutersCard
+        id="shortcuts-user-guide"
+        title="Shortcuts User Guide"
+        image={{
+          title: "Shortcuts User Guide Image",
+          tile: "2",
+          className: "!h-auto max-w-full items-end mt-[46px]",
+          width: "317px",
+          height: "293px",
+        }}
+        bgColor="linear-gradient(192deg, #004f7a, #000)"
+        link={{
+          href: "https://support.apple.com/guide/shortcuts/welcome/ios",
+          text: "Learn more about the Shortcuts app",
+        }}
+      />
+      <RoutersCard
+        id="siri-for-developers"
+        title="Siri for developers"
+        image={{
+          title: "Siri for developers Image",
+          tile: "3",
+          height: "210px",
+          width: "231px",
+        }}
+        bgColor="linear-gradient(180deg, #423486 0%, #2E1549)"
+        link={{
+          href: "https://developer.apple.com/siri/",
+          text: "Learn more about SiriKit",
+        }}
+      />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { setupParallaxEffect } from "@/utils/parallaxEffect";
+
+  setupParallaxEffect({
+    selector: "#use-siri-on-your-apple-devices",
+    startElevation: 100,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 1.5,
+  });
+
+  setupParallaxEffect({
+    selector: "#shortcuts-user-guide",
+    startElevation: 160,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 1.5,
+  });
+
+  setupParallaxEffect({
+    selector: "#siri-for-developers",
+    startElevation: 210,
+    endElevation: 0,
+    easingFactor: 0.1,
+    progressScale: 1.5,
+  });
+</script>
