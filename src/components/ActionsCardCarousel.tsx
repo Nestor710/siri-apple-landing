@@ -41,16 +41,18 @@ export const InfiniteMarquee = ({ items, direction = 'left', speed = 30, classNa
     const marquee = marqueeRef.current;
     if (!marquee) return;
 
-    const handleMouseEnter = () => setIsPaused(true);
-    const handleMouseLeave = () => setIsPaused(false);
-    
-    marquee.addEventListener('mouseenter', handleMouseEnter as EventListener);
-    marquee.addEventListener('mouseleave', handleMouseLeave as EventListener);
-    
-    return () => {
-      marquee.removeEventListener('mouseenter', handleMouseEnter as EventListener);
-      marquee.removeEventListener('mouseleave', handleMouseLeave as EventListener);
-    };
+      if (pause === false) {
+        const handleMouseEnter = () => setIsPaused(true);
+        const handleMouseLeave = () => setIsPaused(false);
+        
+        marquee.addEventListener('mouseenter', handleMouseEnter as EventListener);
+        marquee.addEventListener('mouseleave', handleMouseLeave as EventListener);
+
+      return () => {
+        marquee.removeEventListener('mouseenter', handleMouseEnter as EventListener);
+        marquee.removeEventListener('mouseleave', handleMouseLeave as EventListener);
+      };
+    }
   }, []);
 
   // Efecto para manejar el estado de pausa cuando cambie en el componente padre
