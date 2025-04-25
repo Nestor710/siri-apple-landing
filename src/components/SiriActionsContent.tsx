@@ -108,15 +108,15 @@ export default function SiriActionsContent() {
     className="transition-opacity duration-300 ease-in-out pt-8 bg-[#152046] flex flex-wrap"
     style={{ "--card-width": "304px", "--card-gap": "24px" } as any}>
     <div className="w-full overflow-hidden relative transition-all duration-600 ease-out">
-      <InfiniteMarquee items={firstRow} direction="left" speed={200} className="" />
-      <InfiniteMarquee items={secondRow} direction="right" speed={150} className="" />
-      <InfiniteMarquee items={thirdRow} direction="left" speed={200} className="" />
+      <InfiniteMarquee items={firstRow} direction="left" speed={200} className="" pause={isPaused} />
+      <InfiniteMarquee items={secondRow} direction="right" speed={150} className="" pause={isPaused} />
+      <InfiniteMarquee items={thirdRow} direction="left" speed={200} className="" pause={isPaused} />
     </div>
     <div className="text-center relative pb-[180px] mt-[18px] mr-[30px] flex flex-1 justify-end">
       <button className="cursor-pointer" onClick={() => setIsPaused(!isPaused)}>
         
           <img 
-          src={`/src/assets/svg/${isPaused ? 'pause' : 'play'}-icon.svg`} 
+          src={`/src/assets/svg/${!isPaused ? 'pause' : 'play'}-icon.svg`} 
           width={36} 
           height={36} 
           className=""

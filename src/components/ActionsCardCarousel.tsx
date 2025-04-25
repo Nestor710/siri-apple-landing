@@ -8,8 +8,8 @@ interface TextItem {
 }
 
 export const InfiniteMarquee = ({ items, direction = 'left', speed = 30, className = '', pause = false }: { items: TextItem[], direction?: 'left' | 'right', speed?: number, className?: string, pause?: boolean }) => {
-  const [isPaused, setIsPaused] = useState(pause);
-  
+  const [isPaused, setIsPaused] = useState<boolean>(pause);
+
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   // Estilos en línea para las animaciones
@@ -40,7 +40,7 @@ export const InfiniteMarquee = ({ items, direction = 'left', speed = 30, classNa
   useEffect(() => {
     const marquee = marqueeRef.current;
     if (!marquee) return;
-    
+
     const handleMouseEnter = () => setIsPaused(true);
     const handleMouseLeave = () => setIsPaused(false);
     
@@ -52,6 +52,11 @@ export const InfiniteMarquee = ({ items, direction = 'left', speed = 30, classNa
       marquee.removeEventListener('mouseleave', handleMouseLeave as EventListener);
     };
   }, []);
+
+  // Efecto para manejar el estado de pausa cuando cambie en el componente padre
+  useEffect(() => {
+    setIsPaused(pause);
+  }, [pause]);
 
   return (
     <>
